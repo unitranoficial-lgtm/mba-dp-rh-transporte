@@ -1,0 +1,24 @@
+APRESENTAÇÃO: MBA em DP e RH do Transporte | Para a transportadora
+Pacote para publicar no GitHub Pages (GitHub da UNITRAN)
+
+O QUE TEM NESTA PASTA
+- index.html: a apresentação completa (página única, sem banco de dados).
+- img/: logos, fotos dos professores e imagens dos caminhões.
+- A página já tem a marcação "noindex, nofollow" (não aparece no Google).
+- Ela se ajusta sozinha: no computador mostra os slides na horizontal; em celular ou tablet em pé, mostra a versão vertical.
+
+PASSO A PASSO
+1. No GitHub da UNITRAN, crie um repositório PÚBLICO com o nome:
+   apresentacao-mba-transportadora
+   (O GitHub Pages gratuito só publica repositórios públicos.)
+2. No repositório, use "Add file" > "Upload files" e envie o index.html e a pasta img inteira, na raiz do repositório (não dentro de outra pasta). Este LEIA-ME pode ir junto ou ficar de fora.
+3. Vá em Settings > Pages > Build and deployment:
+   Source: Deploy from a branch
+   Branch: main  /  (root)
+   Clique em Save.
+4. Em um ou dois minutos o link fica no ar:
+   https://unitranoficial-lgtm.github.io/apresentacao-mba-transportadora/
+5. Teste no computador e no celular antes de enviar para os clientes.
+
+PARA ATUALIZAR DEPOIS
+- Substitua o index.html (e, se mudar alguma imagem, o arquivo na pasta img). O link continua o mesmo.
