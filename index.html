@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
 <title>MBA em DP e RH do Transporte | Apresentação para a transportadora</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +25,8 @@
 }
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; }
-body { background: var(--paper); color: var(--ink); font-family: var(--body); overflow: hidden; }
+html { overflow: hidden; }
+body { position: fixed; inset: 0; background: var(--paper); color: var(--ink); font-family: var(--body); overflow: hidden; }
 p { margin: 0; }
 
 .aurora { position: fixed; inset: -20%; pointer-events: none; z-index: 0; }
@@ -95,7 +97,7 @@ p { margin: 0; }
 
 /* 4-9. detalhe do módulo */
 .mod-grid { display: grid; grid-template-columns: 1fr 720px; gap: 70px; align-items: start; }
-.wm { position: absolute; right: 100px; top: 40px; font-family: var(--display); font-weight: 800; font-size: 420px; line-height: 1; color: rgba(109,40,217,.06); pointer-events: none; }
+.wm { position: absolute; right: 100px; top: 20px; font-family: var(--display); font-weight: 800; font-size: 270px; line-height: 1; color: rgba(109,40,217,.06); pointer-events: none; }
 .disc { border-top: 1px solid var(--line); margin-bottom: 34px; }
 .disc div { display: flex; justify-content: space-between; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 26px; }
 .disc b { color: #9A92B5; font-family: var(--body); font-weight: 500; font-size: 20px; white-space: nowrap; align-self: center; }
@@ -108,15 +110,15 @@ p { margin: 0; }
 .pain .p { font-family: var(--display); font-weight: 700; font-size: 38px; line-height: 1.25; }
 .pain .f { margin-top: 24px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.22); font-size: 24px; line-height: 1.45; color: #EEE8FF; }
 .pain .f small { display: block; font-size: 18px; color: #CFC3FF; margin-top: 6px; }
-.q { margin-top: 30px; padding: 26px 30px; border-radius: 24px; background: rgba(255,255,255,.78); border: 1px solid var(--line); }
-.q .k { margin-bottom: 8px; }
+.q { margin-top: 30px; padding: 28px 34px; border-radius: 34px; background: rgba(237,233,254,.72); }
+.q .k { margin-bottom: 10px; font-size: 22px; font-weight: 600; letter-spacing: 0; text-transform: none; }
 .dense .pain { padding: 36px 40px 34px; }
 .dense .pain .p { font-size: 32px; }
 .dense .pain .f { margin-top: 18px; padding-top: 16px; font-size: 22px; }
 .dense .q { margin-top: 24px; }
-.dense .q p { font-size: 26px; }
-.q .q2 { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
-.q p { font-family: var(--display); font-weight: 600; font-size: 30px; line-height: 1.3; color: var(--ink); }
+.dense .q p { font-size: 25px; }
+.q .q2 { margin-top: 12px; }
+.q p { font-family: var(--body); font-style: italic; font-weight: 500; font-size: 27px; line-height: 1.4; color: #3B2F5C; }
 
 /* 10. estudo de caso */
 .s-caso { background: linear-gradient(120deg, #2E1065, #5B21B6 45%, #7C3AED 80%, #4F46E5); background-size: 200% 200%; animation: violetflow 14s ease-in-out infinite alternate; color: #FBF9FF; }
@@ -179,28 +181,34 @@ p { margin: 0; }
 
 /* 14. vale a pena */
 .asks { border-top: 1px solid var(--line); }
-.asks div { display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: center; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.asks div { display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--line); }
 .asks b { font-family: var(--display); font-weight: 800; font-size: 44px; background: linear-gradient(135deg, #C4B5FD, #6D28D9); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.asks p { font-family: var(--display); font-weight: 600; font-size: 34px; line-height: 1.3; }
-.after { margin-top: 34px; font-size: 30px; color: var(--ink-soft); }
+.asks p { font-family: var(--display); font-weight: 600; font-size: 32px; line-height: 1.28; }
+.after { margin-top: 26px; font-size: 30px; color: var(--ink-soft); }
 .after b { color: var(--violet); }
 
 /* 15. investimento */
-.inv { display: grid; grid-template-columns: 800px 1fr; gap: 70px; align-items: center; }
-.price { position: relative; padding: 56px 60px; border-radius: 44px; background: linear-gradient(125deg, #3B0F86, #6D28D9 55%, #8B5CF6); color: #FBF9FF; box-shadow: 0 40px 100px rgba(76,29,149,.35); overflow: hidden; }
+.inv { display: grid; grid-template-columns: 820px 1fr; gap: 80px; align-items: stretch; }
+.price { position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 54px 60px 52px; border-radius: 44px; background: linear-gradient(125deg, #3B0F86, #6D28D9 55%, #8B5CF6); color: #FBF9FF; box-shadow: 0 40px 100px rgba(76,29,149,.35); overflow: hidden; }
 .price::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; background: linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.16), rgba(255,255,255,0)); animation: sheen 5s ease-in-out infinite 2s; }
 @keyframes sheen { 0% { left: -60%; } 40%, 100% { left: 130%; } }
 .price .lbl { font-size: 22px; letter-spacing: .14em; text-transform: uppercase; color: #DDD0FF; font-weight: 700; }
-.old { position: relative; display: inline-block; font-family: var(--display); font-weight: 700; font-size: 52px; margin-top: 8px; color: #E4DBFF; }
+.p-top { display: flex; align-items: baseline; gap: 22px; }
+.old { position: relative; display: inline-block; font-family: var(--display); font-weight: 700; font-size: 46px; color: #E4DBFF; }
+.p-bolsa { position: relative; isolation: isolate; display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: 30px; row-gap: 26px; }
+.pct { position: relative; font-family: var(--display); font-weight: 800; font-size: 250px; line-height: .86; letter-spacing: -.05em; color: #FFFFFF; white-space: nowrap; text-shadow: 0 10px 50px rgba(30,6,80,.35); }
+.pct::before { content: ""; position: absolute; left: 50%; top: 50%; width: 440px; height: 440px; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(196,181,253,.55), rgba(125,211,252,.18) 45%, rgba(125,211,252,0) 70%); z-index: -1; animation: glow 4s ease-in-out infinite; }
+@keyframes glow { 50% { transform: translate(-50%, -50%) scale(1.12); opacity: .75; } }
+.pct i { font-style: normal; font-size: 120px; letter-spacing: 0; margin-left: 6px; vertical-align: top; position: relative; top: 14px; }
+.pct-t { font-family: var(--display); font-weight: 800; font-size: 64px; line-height: 1.02; }
+.pct-s { grid-column: 1 / -1; justify-self: start; padding: 12px 26px; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.26); font-size: 27px; font-weight: 700; color: #F6F2FF; }
+.p-pay { border-top: 1px solid rgba(255,255,255,.24); padding-top: 34px; }
 .old::after { content: ""; position: absolute; left: -3%; right: -3%; top: 52%; height: 7px; border-radius: 7px; background: #7DD3FC; transform: scaleX(0); transform-origin: left; transition: transform .7s var(--ease) .7s; }
 .slide.active .old::after { transform: scaleX(1); }
-.badge { display: flex; align-items: center; gap: 18px; margin-top: 22px; padding: 12px 26px 12px 12px; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); font-weight: 700; font-size: 26px; width: fit-content; opacity: 0; transform: scale(.85); transition: opacity .5s var(--ease) 1.2s, transform .7s cubic-bezier(.3,1.5,.5,1) 1.2s; }
-.slide.active .badge { opacity: 1; transform: none; }
-.badge b { font-family: var(--display); font-size: 36px; background: #FBF9FF; color: #5B21B6; padding: 4px 18px; border-radius: 999px; }
-.final { font-family: var(--display); font-weight: 800; font-size: 132px; line-height: 1; letter-spacing: -.03em; margin-top: 28px; font-variant-numeric: tabular-nums; }
-.final small { font-size: 56px; letter-spacing: 0; }
-.cash { font-size: 36px; font-weight: 700; margin-top: 14px; }
-.burst { position: absolute; left: 560px; top: 300px; width: 0; height: 0; pointer-events: none; }
+.final { font-family: var(--display); font-weight: 800; font-size: 112px; line-height: 1; letter-spacing: -.03em; margin-top: 0; font-variant-numeric: tabular-nums; }
+.final small { font-size: 48px; letter-spacing: 0; }
+.cash { font-size: 34px; font-weight: 700; margin-top: 14px; color: #F3EEFF; }
+.burst { position: absolute; left: 150px; top: 50%; width: 0; height: 0; pointer-events: none; }
 .burst i { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--c); opacity: 0; }
 .burst.go i { animation: spark 1.2s var(--ease) forwards; }
 @keyframes spark { 0% { opacity: 1; transform: translate(0,0) scale(1); } 100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(.3); } }
@@ -213,6 +221,116 @@ p { margin: 0; }
 .cta { display: inline-flex; align-items: center; gap: 14px; margin-top: 20px; padding: 22px 36px; border-radius: 999px; background: linear-gradient(110deg, #5B21B6, #7C3AED); color: #FBF9FF; font-weight: 700; font-size: 28px; text-decoration: none; box-shadow: 0 18px 40px rgba(91,33,182,.35); }
 .tel { display: block; margin-top: 16px; font-size: 24px; color: var(--ink-soft); }
 
+
+/* ===== celular em pé: o mesmo conteúdo em palco vertical (1080 de largura), um slide por tela ===== */
+body.mob .slide { padding: 140px 72px 240px; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+body.mob .eyebrow { font-size: 30px; margin-bottom: 26px; }
+body.mob .eyebrow::before { width: 40px; }
+body.mob .h2 { font-size: 76px; line-height: 1.08; margin-bottom: 44px; }
+body.mob .wm { font-size: 300px; right: 30px; top: 70px; }
+body.mob .src { position: static; width: auto; margin-top: 44px; font-size: 26px; line-height: 1.4; }
+body.mob .k { font-size: 28px; }
+/* capa */
+body.mob .cover-visual { position: relative; right: auto; top: auto; width: 760px; height: 760px; margin: -60px auto -40px; }
+body.mob .cover-photo { left: 46px; top: 199px; width: 668px; }
+body.mob .slide[aria-label="Capa"] { display: flex; flex-direction: column; justify-content: center; }
+body.mob .slide[aria-label="Capa"] > * { flex-shrink: 0; }
+body.mob .cover-left { width: auto; }
+body.mob.short .cover-visual { width: 600px; height: 600px; margin: -50px auto -30px; }
+body.mob.short .cover-photo { left: 37px; top: 157px; width: 527px; }
+body.mob .logos { margin-bottom: 40px; }
+body.mob .logos img { height: 92px; }
+body.mob .logos img.lf { height: 52px; }
+body.mob .display { font-size: 96px; }
+body.mob .ask { font-size: 44px; margin-top: 34px; }
+body.mob .pill { font-size: 31px; margin-top: 40px; padding: 18px 30px; }
+/* por que agora */
+body.mob .rowx { grid-template-columns: 1fr; gap: 10px; padding: 30px 0; }
+body.mob .rowx .n { font-size: 60px; }
+body.mob .rowx p { font-size: 44px; }
+body.mob .band { font-size: 42px; padding: 36px 40px; margin-top: 44px; }
+/* visão geral */
+body.mob .tbl-head { display: none; }
+body.mob .tr { grid-template-columns: 96px 1fr; gap: 12px 26px; padding: 28px 0; align-items: start; }
+body.mob .tr .num { font-size: 60px; grid-row: span 2; }
+body.mob .tr .t { font-size: 42px; }
+body.mob .tr .t small { font-size: 28px; }
+body.mob .tr .l { display: none; }
+body.mob .tr .res { grid-column: 2; font-size: 38px; }
+/* módulos */
+body.mob .mod-grid { grid-template-columns: 1fr; gap: 44px; }
+body.mob .disc { margin-bottom: 40px; }
+body.mob .disc div { font-size: 36px; padding: 18px 0; }
+body.mob .disc b { font-size: 28px; }
+body.mob .learn { gap: 20px; }
+body.mob .learn li { font-size: 44px; padding-left: 48px; }
+body.mob .learn li::before { top: 20px; width: 20px; height: 20px; }
+body.mob .pain { padding: 46px 46px 42px; border-radius: 36px; }
+body.mob .pain .p { font-size: 50px; }
+body.mob .pain .f { font-size: 36px; margin-top: 26px; padding-top: 24px; }
+body.mob .pain .f small { font-size: 28px; }
+body.mob .q { margin-top: 30px; padding: 38px 42px; border-radius: 40px; }
+body.mob .q .k { font-size: 32px; }
+body.mob .q p { font-size: 42px; }
+body.mob .q .q2 { margin-top: 18px; }
+/* estudo de caso */
+body.mob .caso-photo { position: relative; right: auto; top: auto; width: 420px; margin: -30px auto 10px; }
+body.mob .caso-text { position: static; width: auto; display: block; }
+body.mob .steps div { grid-template-columns: 70px 1fr; padding: 26px 0; font-size: 44px; }
+body.mob .steps b { font-size: 50px; }
+body.mob .trio { flex-direction: column; margin-top: 40px; }
+body.mob .trio div { flex: none; padding: 22px 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.3); }
+body.mob .trio div:first-child { padding-top: 0; border-top: 0; }
+body.mob .trio b { font-size: 50px; }
+body.mob .trio span { font-size: 36px; }
+/* Ariel */
+body.mob .ariel-photo { position: relative; left: auto; top: auto; width: 440px; margin: -30px auto 20px; }
+body.mob .ariel-text { position: static; display: block; }
+body.mob .ariel-text .name { font-size: 86px; }
+body.mob .ariel-text .role { font-size: 44px; }
+body.mob .ariel-text .cv { font-size: 36px; }
+body.mob .stats div { padding: 0 26px; }
+body.mob .stats b { font-size: 70px; }
+body.mob .stats > div > span { font-size: 28px; }
+body.mob .teach { font-size: 40px; }
+/* corpo docente */
+body.mob .team { display: flex; flex-wrap: wrap; justify-content: center; gap: 46px 24px; }
+body.mob .prof { width: calc((100% - 48px) / 3); max-width: 340px; }
+body.mob .prof .nm { font-size: 32px; }
+body.mob .prof .tt { font-size: 21px; }
+body.mob .prof .cv { font-size: 28px; }
+body.mob .extras { grid-template-columns: 1fr; gap: 24px; margin-top: 50px; }
+body.mob .extras div { font-size: 36px; padding: 30px 34px; }
+/* perguntas frequentes */
+body.mob .faq { grid-template-columns: 1fr; }
+body.mob .faq div { padding: 30px 0; }
+body.mob .faq h3 { font-size: 46px; }
+body.mob .faq p { font-size: 38px; }
+/* vale a pena */
+body.mob .asks div { grid-template-columns: 76px 1fr; gap: 20px; padding: 24px 0; }
+body.mob .asks b { font-size: 56px; }
+body.mob .asks p { font-size: 44px; }
+body.mob .after { font-size: 40px; }
+/* oferta */
+body.mob .inv { grid-template-columns: 1fr; gap: 64px; }
+body.mob .price { gap: 44px; padding: 50px 50px 48px; }
+body.mob .price .lbl { font-size: 24px; }
+body.mob .pct-t { font-size: 60px; }
+body.mob .pct-s { font-size: 30px; }
+body.mob .final { font-size: 120px; }
+body.mob .final small { font-size: 50px; }
+body.mob .cash { font-size: 38px; }
+body.mob .right h3 { font-size: 56px; }
+body.mob .right p { font-size: 40px; }
+body.mob .right p.go { font-size: 40px; }
+body.mob .incl div { font-size: 38px; padding: 16px 0; }
+body.mob .cta { font-size: 38px; padding: 30px 46px; }
+body.mob .tel { font-size: 32px; }
+body.mob #fs { display: none; }
+body.mob .ui { padding: 34px 16px 14px; background: linear-gradient(to top, rgba(246,243,253,.97) 55%, rgba(246,243,253,0)); }
+body.mob.dark .ui { background: linear-gradient(to top, rgba(62,20,140,.97) 55%, rgba(62,20,140,0)); }
+body.mob .hint { bottom: 84px; font-size: 13px; }
+
 /* comandos */
 .ui { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; padding: 14px 22px; pointer-events: none; }
 .ui > * { pointer-events: auto; }
@@ -224,152 +342,11 @@ p { margin: 0; }
 .count { font-family: var(--display); font-weight: 600; font-size: 15px; color: var(--ink-soft); background: rgba(255,255,255,.75); padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); }
 .hint { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 6; font-size: 14px; color: var(--ink-soft); background: rgba(255,255,255,.9); padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); transition: opacity 1s; white-space: nowrap; }
 .hint.off { opacity: 0; pointer-events: none; }
-.rotate { display: none; position: fixed; left: 12px; right: 12px; top: 12px; z-index: 7; padding: 10px 14px; border-radius: 14px; background: rgba(26,16,51,.88); color: #fff; font-size: 13px; text-align: center; }
-@media (orientation: portrait) and (max-width: 700px) { .rotate { display: block; } }
-body.capture .ui, body.capture .hint, body.capture .progress, body.capture .rotate { display: none !important; }
-
-/* ===== CELULAR EM PÉ (9:16): layout próprio, sem escalar o palco 16:9 ===== */
-body.m .rotate { display: none !important; }
-body.m .stage { position: fixed; inset: 0; left: 0; top: 0; width: 100%; height: 100%; transform: none; }
-body.m .slide { display: flex; flex-direction: column; padding: 52px 22px 84px; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
-body.m .slide::before, body.m .slide::after { content: ""; flex: 1 0 0; }
-body.m .slide::before { order: -10; }
-body.m .slide::after { order: 99; }
-body.m .slide > * { flex: none; }
-body.m .eyebrow { font-size: 12px; margin: 0 0 12px; gap: 10px; }
-body.m .eyebrow::before { width: 28px; }
-body.m .display { font-size: 34px; }
-body.m .h2 { font-size: 26px; margin: 0 0 18px; }
-body.m .src { position: static; width: auto; font-size: 11px; margin-top: 16px; }
-
-/* 1. capa */
-body.m .cover-left { width: auto; }
-body.m .logos { gap: 12px; margin-bottom: 24px; }
-body.m .logos img { height: 40px; }
-body.m .logos img.lf { height: 22px; }
-body.m .logos span { font-size: 18px; }
-body.m .ask { font-size: 18px; margin-top: 18px; }
-body.m .pill { font-size: 13px; padding: 10px 16px; margin-top: 20px; gap: 10px; }
-body.m .live { width: 10px; height: 10px; }
-body.m .cover-visual { order: 2; position: relative; right: auto; top: auto; width: 100%; max-width: 420px; height: auto; aspect-ratio: 1; margin: 4px auto 0; }
-body.m .cover-photo { left: 6%; top: 26%; width: 88%; }
-
-/* 2. por que agora */
-body.m .rowx { grid-template-columns: 1fr; gap: 4px; padding: 14px 0; }
-body.m .rowx .n { font-size: 24px; }
-body.m .rowx p { font-size: 16px; }
-body.m .band { font-size: 16px; padding: 16px 18px; border-radius: 16px; margin-top: 18px; }
-
-/* 3. visão geral */
-body.m .tbl-head { display: none; }
-body.m .tr { grid-template-columns: 44px 1fr; gap: 4px 12px; padding: 12px 0; align-items: start; }
-body.m .tr .num { font-size: 26px; grid-row: 1 / span 3; }
-body.m .tr .t { font-size: 16px; }
-body.m .tr .t small { font-size: 12px; }
-body.m .tr .l { font-size: 13px; }
-body.m .tr .res { font-size: 13px; padding-left: 10px; border-left-width: 3px; }
-
-/* 4-9. módulos */
-body.m .mod-grid { grid-template-columns: 1fr; gap: 18px; }
-body.m .wm { font-size: 160px; right: 10px; top: 30px; }
-body.m .disc { margin-bottom: 16px; }
-body.m .disc div { font-size: 14px; padding: 8px 0; gap: 12px; }
-body.m .disc b { font-size: 12px; }
-body.m .k { font-size: 11px; margin-bottom: 8px; }
-body.m .learn { gap: 8px; }
-body.m .learn li { font-size: 15px; padding-left: 24px; }
-body.m .learn li::before { top: 6px; width: 11px; height: 11px; }
-body.m .pain, body.m .dense .pain { padding: 20px; border-radius: 18px; }
-body.m .pain .p { font-size: 19px; }
-body.m .dense .pain .p { font-size: 17px; }
-body.m .pain .f, body.m .dense .pain .f { font-size: 13px; margin-top: 12px; padding-top: 12px; }
-body.m .pain .f small { font-size: 11px; }
-body.m .q, body.m .dense .q { margin-top: 14px; padding: 16px; border-radius: 16px; }
-body.m .q p, body.m .dense .q p { font-size: 16px; }
-body.m .q .q2 { margin-top: 10px; padding-top: 10px; }
-
-/* 10. estudo de caso */
-body.m .caso-photo { position: relative; right: auto; top: auto; width: 55%; max-width: 260px; margin: 0 auto 6px; }
-body.m .caso-text { position: static; width: auto; display: block; }
-body.m .steps { margin-top: 14px; }
-body.m .steps div { grid-template-columns: 30px 1fr; gap: 10px; padding: 10px 0; font-size: 15px; }
-body.m .steps b { font-size: 20px; }
-body.m .trio { flex-direction: column; margin-top: 16px; }
-body.m .trio div { padding: 8px 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.22); }
-body.m .trio div:first-child { border-top: 0; padding-top: 0; }
-body.m .trio b { font-size: 18px; }
-body.m .trio span { font-size: 13px; }
-
-/* 11. Ariel */
-body.m .ariel-photo { position: relative; left: auto; top: auto; width: 58%; max-width: 260px; margin: 0 auto 4px; }
-body.m .ariel-text { position: static; display: block; }
-body.m .ariel-text .name { font-size: 32px; }
-body.m .ariel-text .role { font-size: 16px; margin-top: 10px; }
-body.m .ariel-text .cv { font-size: 13px; margin-top: 8px; }
-body.m .stats { margin-top: 16px; }
-body.m .stats div { padding: 0 12px; }
-body.m .stats b { font-size: 28px; }
-body.m .stats span { font-size: 11px; }
-body.m .stats b span { font-size: inherit; }
-body.m .teach { font-size: 14px; padding: 14px 16px; margin-top: 16px; border-left-width: 4px; }
-
-/* 12. corpo docente */
-body.m .team { grid-template-columns: 1fr; gap: 14px; }
-body.m .prof { display: grid; grid-template-columns: 76px 1fr; column-gap: 14px; text-align: left; align-items: start; }
-body.m .prof .ph { grid-row: 1 / span 4; width: 76px; height: 101px; margin: 0; }
-body.m .prof .nm { font-size: 16px; margin-top: 0; }
-body.m .prof .tt { font-size: 10px; }
-body.m .prof .cv { font-size: 12px; margin-top: 4px; }
-body.m .prof .en { font-size: 12px; margin-top: 4px; }
-body.m .extras { grid-template-columns: 1fr; gap: 10px; margin-top: 18px; }
-body.m .extras div { padding: 12px 14px; gap: 12px; font-size: 13px; border-radius: 16px; }
-body.m .extras svg { width: 30px; height: 30px; }
-
-/* 13. perguntas */
-body.m .faq { grid-template-columns: 1fr; }
-body.m .faq div { padding: 10px 0; }
-body.m .faq h3 { font-size: 16px; }
-body.m .faq p { font-size: 13px; margin-top: 4px; }
-
-/* 14. vale a pena */
-body.m .asks div { grid-template-columns: 34px 1fr; gap: 10px; padding: 12px 0; }
-body.m .asks b { font-size: 24px; }
-body.m .asks p { font-size: 17px; }
-body.m .after { font-size: 15px; margin-top: 16px; }
-
-/* 15. investimento */
-body.m .inv { grid-template-columns: 1fr; gap: 22px; }
-body.m .price { padding: 26px 22px; border-radius: 24px; }
-body.m .price .lbl { font-size: 12px; }
-body.m .old { font-size: 26px; }
-body.m .badge { font-size: 13px; gap: 10px; padding: 6px 14px 6px 6px; margin-top: 12px; }
-body.m .badge b { font-size: 18px; padding: 2px 10px; }
-body.m .final { font-size: 56px; margin-top: 14px; }
-body.m .final small { font-size: 24px; }
-body.m .cash { font-size: 17px; }
-body.m .burst { left: 50%; top: 45%; }
-body.m .right h3 { font-size: 22px; gap: 10px; }
-body.m .right p { font-size: 14px; margin-top: 10px; }
-body.m .right p.go { font-size: 16px; margin-top: 14px; }
-body.m .incl { margin-top: 14px; }
-body.m .incl div { font-size: 13px; padding: 7px 0; gap: 10px; }
-body.m .incl div::before { width: 9px; height: 9px; }
-body.m .cta { font-size: 15px; padding: 14px 22px; margin-top: 16px; }
-body.m .tel { font-size: 12px; margin-top: 10px; }
-
-/* comandos no celular */
-body.m .ui { padding: 18px 12px 10px; background: linear-gradient(rgba(246,243,253,0), rgba(246,243,253,.94) 45%); }
-.more { display: none; }
-body.m.has-more .more { display: block; position: fixed; left: 50%; bottom: 68px; transform: translateX(-50%); z-index: 6; font-size: 12px; font-weight: 700; color: var(--violet); background: rgba(255,255,255,.92); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); pointer-events: none; animation: bob 1.6s ease-in-out infinite; }
-@keyframes bob { 50% { transform: translate(-50%, -4px); } }
-body.m .tr { padding: 10px 0; }
-body.m .count { font-size: 12px; padding: 8px 12px; }
-body.m .btn { width: 40px; height: 40px; font-size: 18px; }
-body.m .hint { bottom: 64px; font-size: 12px; }
+body.capture .ui, body.capture .hint, body.capture .progress { display: none !important; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .slide [data-a], .w > span, .badge { opacity: 1 !important; transform: none !important; }
+  .slide [data-a], .w > span { opacity: 1 !important; transform: none !important; }
   .old::after { transform: scaleX(1) !important; }
 }
 </style>
@@ -378,7 +355,6 @@ body.m .hint { bottom: 64px; font-size: 12px; }
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 <canvas id="net" aria-hidden="true"></canvas>
 <div class="progress" id="progress"></div>
-<p class="rotate">Para ver melhor, gire o celular na horizontal.</p>
 
 <main class="stage" id="stage">
 
@@ -415,7 +391,7 @@ body.m .hint { bottom: 64px; font-size: 12px; }
   <h2 class="h2 split" data-start=".2">6 módulos. Cada um resolve <span class="hl">um problema real do transporte.</span></h2>
   <div class="tbl-head" data-a style="--d:.5s"><span></span><span>Módulo</span><span>O que aprende</span><span>O problema que resolve</span></div>
   <div class="tbl">
-    <div class="tr" data-a style="--d:.55s"><span class="num">01</span><p class="t">A Gestão de Pessoas e o Direito<small>40 horas</small></p><p class="l">As regras trabalhistas aplicadas ao transporte de cargas.</p><p class="res">Decisões de RH no achismo, que viram multa e processo</p></div>
+    <div class="tr" data-a style="--d:.55s"><span class="num">01</span><p class="t">A Gestão de Pessoas e o Direito<small>40 horas</small></p><p class="l">As regras trabalhistas aplicadas ao transporte de cargas.</p><p class="res">Decisões de DP e RH tomadas sem conhecer as regras do transporte</p></div>
     <div class="tr" data-a style="--d:.65s"><span class="num">02</span><p class="t">Formação do Contrato<small>90 horas</small></p><p class="l">Recrutamento, perfil comportamental, admissão e eSocial.</p><p class="res">Altos custos com rotatividade e contratação errada</p></div>
     <div class="tr" data-a style="--d:.75s"><span class="num">03</span><p class="t">Gestão e Desenvolvimento<small>45 horas</small></p><p class="l">Gestão estratégica de pessoas e treinamento.</p><p class="res">Perda de bons profissionais e dificuldade para reter motoristas</p></div>
     <div class="tr" data-a style="--d:.85s"><span class="num">04</span><p class="t">Trabalho e Remuneração<small>80 horas</small></p><p class="l">Jornada do motorista, salário e folha de pagamento.</p><p class="res">Horas extras pagas errado e folha fora da nova escala</p></div>
@@ -439,8 +415,8 @@ body.m .hint { bottom: 64px; font-size: 12px; }
       </ul>
     </div>
     <div>
-      <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Decisões de RH tomadas no achismo, que depois viram multa, processo e retrabalho.</p></div>
-      <div class="q" data-a="right" style="--d:.8s"><p class="k">Pergunta para você</p><p>Quando sai uma regra nova, quem na sua empresa sabe dizer o que muda na prática? E quanto custa uma decisão errada do seu RH, ou uma orientação errada que ele recebe de uma contabilidade que não é especialista em transporte?</p></div>
+      <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Decisões de DP e RH tomadas sem conhecer as regras do transporte, que viram multa, processo e retrabalho.</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quanto já custou para a sua empresa uma decisão do DP ou do RH tomada no achismo?</p><p class="q2">Quem na sua empresa acompanha as mudanças nas regras trabalhistas e está treinado para aplicar essas regras na prática?</p></div>
     </div>
   </div>
 </section>
@@ -461,7 +437,7 @@ body.m .hint { bottom: 64px; font-size: 12px; }
     </div>
     <div>
       <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Altos custos com rotatividade e com contratação errada.</p><p class="f">Cada motorista que sai gera rescisão, recrutamento, exames, toxicológico, integração e caminhão parado até a reposição. Uma estimativa conservadora do setor fica entre R$ 1.000 e R$ 2.000 por saída.</p></div>
-      <div class="q" data-a="right" style="--d:.8s"><p class="k">Pergunta para você</p><p>Quantos motoristas saíram da sua empresa nos últimos 12 meses? Multiplique por esse valor.</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quantos motoristas saíram da sua empresa nos últimos 12 meses? Multiplique por esse valor.</p></div>
     </div>
   </div>
 </section>
@@ -482,7 +458,7 @@ body.m .hint { bottom: 64px; font-size: 12px; }
     </div>
     <div>
       <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Perda de bons profissionais e dificuldade para reter motoristas.</p><p class="f">88% das empresas do transporte de cargas relatam dificuldade para contratar motoristas. Quem já está na empresa vale mais do que nunca.<small>Fonte: NTC&amp;Logística, pesquisa de 2025.</small></p></div>
-      <div class="q" data-a="right" style="--d:.8s"><p class="k">Pergunta para você</p><p>Quantos bons profissionais você perdeu este ano para a concorrência por uma diferença pequena de salário?</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quantos bons profissionais você perdeu este ano para a concorrência por uma diferença pequena de salário?</p></div>
     </div>
   </div>
 </section>
@@ -503,7 +479,7 @@ body.m .hint { bottom: 64px; font-size: 12px; }
     </div>
     <div>
       <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Horas extras pagas errado e uma folha que não acompanha a nova escala.</p><p class="f">Hora extra é o assunto número 1 das ações trabalhistas no Brasil.<small>Fonte: Tribunal Superior do Trabalho (TST), 2025.</small></p></div>
-      <div class="q" data-a="right" style="--d:.8s"><p class="k">Pergunta para você</p><p>Quanto a sua empresa paga por mês em horas extras calculadas ou lançadas de forma errada? É um gasto que poderia ser evitado.</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quanto a sua empresa paga por mês em horas extras calculadas ou lançadas de forma errada? É um gasto que poderia ser evitado.</p></div>
     </div>
   </div>
 </section>
@@ -525,7 +501,7 @@ body.m .hint { bottom: 64px; font-size: 12px; }
     </div>
     <div>
       <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Passivo trabalhista: processos, acordos e condenações que poderiam ter sido evitados e que chegam depois que o funcionário já saiu.</p><p class="f">Em 2025 foram 2,47 milhões de novas ações trabalhistas no Brasil.<small>Fonte: Tribunal Superior do Trabalho (TST).</small></p></div>
-      <div class="q" data-a="right" style="--d:.8s"><p class="k">Pergunta para você</p><p>Quanto a sua empresa já pagou em acordos e processos trabalhistas? E quanto poderia economizar se os desligamentos e acertos fossem feitos do jeito certo?</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quanto a sua empresa já pagou em acordos e processos trabalhistas?</p><p class="q2">E quanto poderia economizar se os desligamentos e acertos fossem feitos do jeito certo?</p></div>
     </div>
   </div>
 </section>
@@ -546,7 +522,7 @@ body.m .hint { bottom: 64px; font-size: 12px; }
     </div>
     <div>
       <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Afastamentos e acidentes conduzidos de forma errada, que viram multa e passivo trabalhista, e um DP que perde horas com tarefas manuais que poderiam ser automatizadas com inteligência artificial.</p></div>
-      <div class="q" data-a="right" style="--d:.8s"><p class="k">Perguntas para você</p><p>Quanto custa para a sua empresa um afastamento ou acidente de trabalho conduzido de forma errada, que depois vira multa ou processo?</p><p class="q2">Quantas horas por mês o seu RH gasta refazendo planilhas e corrigindo a folha? E quanto tempo economizaria se soubesse aplicar inteligência artificial do jeito certo?</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quanto custa para a sua empresa um afastamento ou acidente de trabalho conduzido de forma errada, que depois vira multa ou processo?</p><p class="q2">Quantas horas por mês o seu RH gasta refazendo planilhas e corrigindo a folha? E quanto tempo economizaria se soubesse aplicar inteligência artificial do jeito certo?</p></div>
     </div>
   </div>
 </section>
@@ -592,11 +568,11 @@ body.m .hint { bottom: 64px; font-size: 12px; }
   <p class="eyebrow" data-a style="--d:.1s">Corpo docente</p>
   <h2 class="h2 split" data-start=".2">Um especialista <span class="hl">para cada área do RH.</span></h2>
   <div class="team">
-    <div class="prof" data-a="flip" style="--d:.4s"><div class="ph"><img src="img/thamires.webp" alt="Foto de Thamires de Freitas"></div><p class="nm">Thamires de Freitas</p><p class="tt">Especialista</p><p class="cv">Economista (PUC-SP), especialista em Pessoas (Mackenzie), analista DISC. 20 anos em gestão de pessoas.</p><p class="en"><b>Ensina:</b> recrutar pelo perfil certo e desenvolver a equipe.</p></div>
-    <div class="prof" data-a="flip" style="--d:.5s"><div class="ph"><img src="img/lucimar.webp" alt="Foto de Lucimar Angela Frigeri"></div><p class="nm">Lucimar Angela Frigeri</p><p class="tt">Mestre</p><p class="cv">Contadora, mestre em Administração (Unoesc). Controladoria e custos em empresas de transporte.</p><p class="en"><b>Ensina:</b> controlar custos com pessoal, salário e remuneração.</p></div>
-    <div class="prof" data-a="flip" style="--d:.6s"><div class="ph"><img src="img/luiz.webp" alt="Foto de Luiz Henrique Santos"></div><p class="nm">Luiz Henrique Santos</p><p class="tt">Mestre e doutorando</p><p class="cv">Mestre em Psicologia do Trabalho, doutorando em Administração, MBA em Gestão de Pessoas.</p><p class="en"><b>Ensina:</b> gestão estratégica de pessoas e retenção.</p></div>
-    <div class="prof" data-a="flip" style="--d:.7s"><div class="ph"><img src="img/felipe.webp" alt="Foto de Felipe Petruzzi Zalta"></div><p class="nm">Felipe Petruzzi Zalta</p><p class="tt">Especialista</p><p class="cv">Engenheiro de Segurança do Trabalho (PUCRS). Mais de 20 anos em saúde e segurança ocupacional.</p><p class="en"><b>Ensina:</b> saúde e segurança do trabalho no transporte.</p></div>
-    <div class="prof" data-a="flip" style="--d:.8s"><div class="ph"><img src="img/carlos.webp" alt="Foto de Carlos Eduardo Pereira"></div><p class="nm">Carlos Eduardo Pereira</p><p class="tt">Mestre e doutorando</p><p class="cv">Mestre em Inteligência de Negócios, doutorando em IA. Mais de 16 anos em grandes empresas.</p><p class="en"><b>Ensina:</b> IA e automação para ganhar tempo no RH.</p></div>
+    <div class="prof" data-a="flip" style="--d:.4s"><div class="ph"><img src="img/thamires.webp" alt="Foto de Thamires de Freitas"></div><p class="nm">Thamires de Freitas</p><p class="tt">Especialista</p><p class="cv">Economista (PUC-SP), especialista em Pessoas (Mackenzie), analista DISC. 20 anos em gestão de pessoas.</p></div>
+    <div class="prof" data-a="flip" style="--d:.5s"><div class="ph"><img src="img/lucimar.webp" alt="Foto de Lucimar Angela Frigeri"></div><p class="nm">Lucimar Angela Frigeri</p><p class="tt">Mestre</p><p class="cv">Contadora, mestre em Administração (Unoesc). Controladoria e custos em empresas de transporte.</p></div>
+    <div class="prof" data-a="flip" style="--d:.6s"><div class="ph"><img src="img/luiz.webp" alt="Foto de Luiz Henrique Santos"></div><p class="nm">Luiz Henrique Santos</p><p class="tt">Mestre e doutorando</p><p class="cv">Mestre em Psicologia do Trabalho, doutorando em Administração, MBA em Gestão de Pessoas.</p></div>
+    <div class="prof" data-a="flip" style="--d:.7s"><div class="ph"><img src="img/felipe.webp" alt="Foto de Felipe Petruzzi Zalta"></div><p class="nm">Felipe Petruzzi Zalta</p><p class="tt">Especialista</p><p class="cv">Engenheiro de Segurança do Trabalho (PUCRS). Mais de 20 anos em saúde e segurança ocupacional.</p></div>
+    <div class="prof" data-a="flip" style="--d:.8s"><div class="ph"><img src="img/carlos.webp" alt="Foto de Carlos Eduardo Pereira"></div><p class="nm">Carlos Eduardo Pereira</p><p class="tt">Mestre e doutorando</p><p class="cv">Mestre em Inteligência de Negócios, doutorando em IA. Mais de 16 anos em grandes empresas.</p></div>
   </div>
   <div class="extras">
     <div data-a style="--d:1s"><svg viewBox="0 0 24 24" fill="none" stroke="#6D28D9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z"/></svg><p><b>Aulas ao vivo todo mês.</b> Além do conteúdo 100% EAD, gravado para o aluno fazer no tempo dele, há aulas ao vivo com os professores das disciplinas e com convidados especiais do setor. Também ficam gravadas.</p></div>
@@ -611,7 +587,7 @@ body.m .hint { bottom: 64px; font-size: 12px; }
   <div class="faq">
     <div data-a style="--d:.5s"><h3>Quanto tempo leva?</h3><p>12 meses, com início em março de 2027. A cada módulo, o conteúdo já é aplicado na rotina da transportadora.</p></div>
     <div data-a style="--d:.58s"><h3>Vai tirar o colaborador da operação?</h3><p>Não. O conteúdo é 100% EAD e gravado, disponível para ele assistir, ler e fazer no tempo dele. Além disso, tem 1 aula ao vivo por mês, que também fica gravada.</p></div>
-    <div data-a style="--d:.66s"><h3>E se eu pagar e ele sair?</h3><p>O estudo de caso deixa uma solução aplicada dentro da sua empresa. E reter pessoas é justamente um dos temas do Módulo 03.</p></div>
+    <div data-a style="--d:.66s"><h3>E se eu pagar e ele sair?</h3><p>O estudo de caso deixa uma solução aplicada dentro da sua empresa. E pense ao contrário: se ele ficar e não for treinado, quanto vai custar ter um RH despreparado para o dia a dia da transportadora?</p></div>
     <div data-a style="--d:.74s"><h3>Por que não um MBA comum de RH?</h3><p>Porque um MBA genérico não ensina jornada do motorista, escala no transporte nem a relação sindical do setor.</p></div>
     <div data-a style="--d:.82s"><h3>É reconhecido pelo MEC?</h3><p>Sim. É ministrado pela FABRANI, instituição autorizada pelo MEC, e o título de especialista tem validade nacional.</p></div>
     <div data-a style="--d:.9s"><h3>Quem pode fazer?</h3><p>Quem tem graduação concluída ou está no último período da graduação.</p></div>
@@ -629,9 +605,10 @@ body.m .hint { bottom: 64px; font-size: 12px; }
     <div data-a style="--d:.62s"><b>2</b><p>Quanto custou a última contratação errada, de alguém que não ficou nem três meses?</p></div>
     <div data-a style="--d:.74s"><b>3</b><p>Quanto foi pago em horas extras calculadas ou lançadas de forma errada, que poderiam ter sido evitadas?</p></div>
     <div data-a style="--d:.86s"><b>4</b><p>Quanto a empresa já pagou em acordos e processos trabalhistas?</p></div>
-    <div data-a style="--d:.98s"><b>5</b><p>Quanto custa uma decisão errada do RH, ou uma orientação errada de uma contabilidade que não é especialista em transporte, quando a regra muda?</p></div>
+    <div data-a style="--d:.98s"><b>5</b><p>Quanto custa uma decisão errada no DP e no RH, tomada no achismo ou por uma orientação errada de fora da empresa?</p></div>
+    <div data-a style="--d:1.1s"><b>6</b><p>Quanto vai custar para a sua transportadora não treinar o DP e o RH para tantas mudanças que vêm no próximo ano?</p></div>
   </div>
-  <p class="after" data-a style="--d:1.2s">Somadas, as respostas mostram quanto a sua transportadora pode economizar. Agora compare com <b>a condição da próxima tela.</b></p>
+  <p class="after" data-a style="--d:1.3s">Somadas, as respostas mostram quanto a sua transportadora pode economizar. Agora compare com <b>a condição da próxima tela.</b></p>
 </section>
 
 <!-- 15. INVESTIMENTO -->
@@ -639,12 +616,17 @@ body.m .hint { bottom: 64px; font-size: 12px; }
   <p class="eyebrow" data-a style="--d:.1s">Condição especial de pré-venda</p>
   <div class="inv">
     <div class="price" data-a="zoom" style="--d:.2s">
-      <p class="lbl">Valor do MBA</p>
-      <p class="old">R$ 12.000</p>
-      <p class="badge"><b>31%</b> de bolsa para as 20 primeiras empresas que fecharem</p>
-      <p class="final"><small>12x de</small> R$ <span data-count="690">690</span></p>
-      <p class="cash">ou R$ 7.590 à vista</p>
-      <div class="burst" id="burst" aria-hidden="true"></div>
+      <div class="p-top"><p class="lbl">Valor do MBA</p><p class="old">R$ 12.000</p></div>
+      <div class="p-bolsa">
+        <p class="pct"><span data-count="31">31</span><i>%</i></p>
+        <p class="pct-t">de bolsa</p>
+        <p class="pct-s">para as 20 primeiras empresas que fecharem</p>
+        <div class="burst" id="burst" aria-hidden="true"></div>
+      </div>
+      <div class="p-pay">
+        <p class="final"><small>12x de</small> R$ <span data-count="690">690</span></p>
+        <p class="cash">ou R$ 7.590 à vista</p>
+      </div>
     </div>
     <div class="right">
       <h3 data-a style="--d:.6s"><span class="live"></span>São só 20 bolsas</h3>
@@ -674,7 +656,6 @@ body.m .hint { bottom: 64px; font-size: 12px; }
     <button class="btn" id="fs" aria-label="Tela cheia">&#x26F6;</button>
   </div>
 </div>
-<p class="more" aria-hidden="true">↓ role para ver mais</p>
 <p class="hint" id="hint">Use as setas ← → ou clique na tela para avançar · F para tela cheia</p>
 
 <script>
@@ -683,14 +664,24 @@ body.m .hint { bottom: 64px; font-size: 12px; }
   const stage = document.getElementById('stage');
   const slides = Array.from(document.querySelectorAll('.slide'));
   let cur = -1;
-  const hintEl = document.getElementById('hint');
+  const hint = document.getElementById('hint');
   function fit() {
-    const mob = innerWidth < innerHeight;
-    document.body.classList.toggle('m', mob);
-    hintEl.textContent = mob ? 'Deslize para o lado ou toque nas setas para avançar' : 'Use as setas ← → ou clique na tela para avançar · F para tela cheia';
-    stage.style.setProperty('--s', Math.min(innerWidth / 1920, innerHeight / 1080));
+    const touch = matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const mob = touch && innerHeight > innerWidth;
+    document.body.classList.toggle('mob', mob);
+    if (mob) {
+      const W = Math.max(1080, Math.round(innerWidth * 1.75)), H = Math.round(W * innerHeight / innerWidth);
+      document.body.classList.toggle('short', H / W < 1.99);
+      stage.style.width = W + 'px'; stage.style.height = H + 'px';
+      stage.style.setProperty('--s', innerWidth / W);
+      hint.textContent = 'Arraste para o lado para passar os slides';
+    } else {
+      stage.style.width = ''; stage.style.height = '';
+      stage.style.setProperty('--s', Math.min(innerWidth / 1920, innerHeight / 1080));
+      hint.textContent = 'Use as setas ← → ou clique na tela para avançar · F para tela cheia';
+    }
   }
-  addEventListener('resize', fit); fit();
+  addEventListener('resize', fit); addEventListener('orientationchange', () => setTimeout(fit, 250)); fit();
 
   document.querySelectorAll('.split').forEach(el => {
     let d = parseFloat(el.dataset.start || 0);
@@ -730,20 +721,13 @@ body.m .hint { bottom: 64px; font-size: 12px; }
     n = Math.max(0, Math.min(slides.length - 1, n));
     if (n === cur) return;
     if (cur >= 0) slides[cur].classList.remove('active');
-    const s = slides[n]; burst.classList.remove('go'); void s.offsetWidth; s.classList.add('active'); cur = n;
+    const s = slides[n]; burst.classList.remove('go'); s.scrollTop = 0; document.body.classList.toggle('dark', s.classList.contains('s-caso')); void s.offsetWidth; s.classList.add('active'); cur = n;
     s.querySelectorAll('[data-count]').forEach(countUp);
     if (s.contains(burst) && !reduce) { void burst.offsetWidth; burst.classList.add('go'); }
     count.textContent = String(n + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
     prog.style.width = ((n + 1) / slides.length * 100) + '%';
     try { history.replaceState(null, '', '#slide-' + (n + 1)); } catch (e) {}
-    s.scrollTop = 0; checkMore();
   }
-  function checkMore() {
-    const s = slides[cur]; if (!s) return;
-    document.body.classList.toggle('has-more', document.body.classList.contains('m') && s.scrollHeight - s.clientHeight - s.scrollTop > 24);
-  }
-  slides.forEach(sl => sl.addEventListener('scroll', checkMore, { passive: true }));
-  addEventListener('resize', () => checkMore());
   window.__show = show;
   const next = () => show(cur + 1), prev = () => show(cur - 1);
   const toggleFs = () => { try { if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {}); else document.exitFullscreen(); } catch (e) {} };
@@ -756,11 +740,15 @@ body.m .hint { bottom: 64px; font-size: 12px; }
     else if (e.key === 'Home') show(0); else if (e.key === 'End') show(slides.length - 1);
     else if (e.key === 'f' || e.key === 'F') toggleFs();
   });
-  let tx = null, ty = null;
+  let tx = null, ty = 0;
   addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
-  addEventListener('touchend', e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.3) (dx < 0 ? next : prev)(); tx = ty = null; });
-  stage.addEventListener('click', e => { if (e.target.closest('a') || document.body.classList.contains('m')) return; if (e.clientX > innerWidth * .5) next(); else prev(); });
-  setTimeout(() => { document.getElementById('hint').classList.add('off'); }, 6000);
+  addEventListener('touchend', e => {
+    if (tx === null) return;
+    const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4) (dx < 0 ? next : prev)();
+  });
+  stage.addEventListener('click', e => { if (e.target.closest('a') || document.body.classList.contains('mob')) return; if (e.clientX > innerWidth * .5) next(); else prev(); });
+  setTimeout(() => document.getElementById('hint').classList.add('off'), 6000);
 
   let mx = 0, my = 0;
   addEventListener('mousemove', e => {
