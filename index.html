@@ -228,6 +228,145 @@ p { margin: 0; }
 @media (orientation: portrait) and (max-width: 700px) { .rotate { display: block; } }
 body.capture .ui, body.capture .hint, body.capture .progress, body.capture .rotate { display: none !important; }
 
+/* ===== CELULAR EM PÉ (9:16): layout próprio, sem escalar o palco 16:9 ===== */
+body.m .rotate { display: none !important; }
+body.m .stage { position: fixed; inset: 0; left: 0; top: 0; width: 100%; height: 100%; transform: none; }
+body.m .slide { display: flex; flex-direction: column; padding: 52px 22px 84px; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+body.m .slide::before, body.m .slide::after { content: ""; flex: 1 0 0; }
+body.m .slide::before { order: -10; }
+body.m .slide::after { order: 99; }
+body.m .slide > * { flex: none; }
+body.m .eyebrow { font-size: 12px; margin: 0 0 12px; gap: 10px; }
+body.m .eyebrow::before { width: 28px; }
+body.m .display { font-size: 34px; }
+body.m .h2 { font-size: 26px; margin: 0 0 18px; }
+body.m .src { position: static; width: auto; font-size: 11px; margin-top: 16px; }
+
+/* 1. capa */
+body.m .cover-left { width: auto; }
+body.m .logos { gap: 12px; margin-bottom: 24px; }
+body.m .logos img { height: 40px; }
+body.m .logos img.lf { height: 22px; }
+body.m .logos span { font-size: 18px; }
+body.m .ask { font-size: 18px; margin-top: 18px; }
+body.m .pill { font-size: 13px; padding: 10px 16px; margin-top: 20px; gap: 10px; }
+body.m .live { width: 10px; height: 10px; }
+body.m .cover-visual { order: 2; position: relative; right: auto; top: auto; width: 100%; max-width: 420px; height: auto; aspect-ratio: 1; margin: 4px auto 0; }
+body.m .cover-photo { left: 6%; top: 26%; width: 88%; }
+
+/* 2. por que agora */
+body.m .rowx { grid-template-columns: 1fr; gap: 4px; padding: 14px 0; }
+body.m .rowx .n { font-size: 24px; }
+body.m .rowx p { font-size: 16px; }
+body.m .band { font-size: 16px; padding: 16px 18px; border-radius: 16px; margin-top: 18px; }
+
+/* 3. visão geral */
+body.m .tbl-head { display: none; }
+body.m .tr { grid-template-columns: 44px 1fr; gap: 4px 12px; padding: 12px 0; align-items: start; }
+body.m .tr .num { font-size: 26px; grid-row: 1 / span 3; }
+body.m .tr .t { font-size: 16px; }
+body.m .tr .t small { font-size: 12px; }
+body.m .tr .l { font-size: 13px; }
+body.m .tr .res { font-size: 13px; padding-left: 10px; border-left-width: 3px; }
+
+/* 4-9. módulos */
+body.m .mod-grid { grid-template-columns: 1fr; gap: 18px; }
+body.m .wm { font-size: 160px; right: 10px; top: 30px; }
+body.m .disc { margin-bottom: 16px; }
+body.m .disc div { font-size: 14px; padding: 8px 0; gap: 12px; }
+body.m .disc b { font-size: 12px; }
+body.m .k { font-size: 11px; margin-bottom: 8px; }
+body.m .learn { gap: 8px; }
+body.m .learn li { font-size: 15px; padding-left: 24px; }
+body.m .learn li::before { top: 6px; width: 11px; height: 11px; }
+body.m .pain, body.m .dense .pain { padding: 20px; border-radius: 18px; }
+body.m .pain .p { font-size: 19px; }
+body.m .dense .pain .p { font-size: 17px; }
+body.m .pain .f, body.m .dense .pain .f { font-size: 13px; margin-top: 12px; padding-top: 12px; }
+body.m .pain .f small { font-size: 11px; }
+body.m .q, body.m .dense .q { margin-top: 14px; padding: 16px; border-radius: 16px; }
+body.m .q p, body.m .dense .q p { font-size: 16px; }
+body.m .q .q2 { margin-top: 10px; padding-top: 10px; }
+
+/* 10. estudo de caso */
+body.m .caso-photo { position: relative; right: auto; top: auto; width: 55%; max-width: 260px; margin: 0 auto 6px; }
+body.m .caso-text { position: static; width: auto; display: block; }
+body.m .steps { margin-top: 14px; }
+body.m .steps div { grid-template-columns: 30px 1fr; gap: 10px; padding: 10px 0; font-size: 15px; }
+body.m .steps b { font-size: 20px; }
+body.m .trio { flex-direction: column; margin-top: 16px; }
+body.m .trio div { padding: 8px 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.22); }
+body.m .trio div:first-child { border-top: 0; padding-top: 0; }
+body.m .trio b { font-size: 18px; }
+body.m .trio span { font-size: 13px; }
+
+/* 11. Ariel */
+body.m .ariel-photo { position: relative; left: auto; top: auto; width: 58%; max-width: 260px; margin: 0 auto 4px; }
+body.m .ariel-text { position: static; display: block; }
+body.m .ariel-text .name { font-size: 32px; }
+body.m .ariel-text .role { font-size: 16px; margin-top: 10px; }
+body.m .ariel-text .cv { font-size: 13px; margin-top: 8px; }
+body.m .stats { margin-top: 16px; }
+body.m .stats div { padding: 0 12px; }
+body.m .stats b { font-size: 28px; }
+body.m .stats span { font-size: 11px; }
+body.m .stats b span { font-size: inherit; }
+body.m .teach { font-size: 14px; padding: 14px 16px; margin-top: 16px; border-left-width: 4px; }
+
+/* 12. corpo docente */
+body.m .team { grid-template-columns: 1fr; gap: 14px; }
+body.m .prof { display: grid; grid-template-columns: 76px 1fr; column-gap: 14px; text-align: left; align-items: start; }
+body.m .prof .ph { grid-row: 1 / span 4; width: 76px; height: 101px; margin: 0; }
+body.m .prof .nm { font-size: 16px; margin-top: 0; }
+body.m .prof .tt { font-size: 10px; }
+body.m .prof .cv { font-size: 12px; margin-top: 4px; }
+body.m .prof .en { font-size: 12px; margin-top: 4px; }
+body.m .extras { grid-template-columns: 1fr; gap: 10px; margin-top: 18px; }
+body.m .extras div { padding: 12px 14px; gap: 12px; font-size: 13px; border-radius: 16px; }
+body.m .extras svg { width: 30px; height: 30px; }
+
+/* 13. perguntas */
+body.m .faq { grid-template-columns: 1fr; }
+body.m .faq div { padding: 10px 0; }
+body.m .faq h3 { font-size: 16px; }
+body.m .faq p { font-size: 13px; margin-top: 4px; }
+
+/* 14. vale a pena */
+body.m .asks div { grid-template-columns: 34px 1fr; gap: 10px; padding: 12px 0; }
+body.m .asks b { font-size: 24px; }
+body.m .asks p { font-size: 17px; }
+body.m .after { font-size: 15px; margin-top: 16px; }
+
+/* 15. investimento */
+body.m .inv { grid-template-columns: 1fr; gap: 22px; }
+body.m .price { padding: 26px 22px; border-radius: 24px; }
+body.m .price .lbl { font-size: 12px; }
+body.m .old { font-size: 26px; }
+body.m .badge { font-size: 13px; gap: 10px; padding: 6px 14px 6px 6px; margin-top: 12px; }
+body.m .badge b { font-size: 18px; padding: 2px 10px; }
+body.m .final { font-size: 56px; margin-top: 14px; }
+body.m .final small { font-size: 24px; }
+body.m .cash { font-size: 17px; }
+body.m .burst { left: 50%; top: 45%; }
+body.m .right h3 { font-size: 22px; gap: 10px; }
+body.m .right p { font-size: 14px; margin-top: 10px; }
+body.m .right p.go { font-size: 16px; margin-top: 14px; }
+body.m .incl { margin-top: 14px; }
+body.m .incl div { font-size: 13px; padding: 7px 0; gap: 10px; }
+body.m .incl div::before { width: 9px; height: 9px; }
+body.m .cta { font-size: 15px; padding: 14px 22px; margin-top: 16px; }
+body.m .tel { font-size: 12px; margin-top: 10px; }
+
+/* comandos no celular */
+body.m .ui { padding: 18px 12px 10px; background: linear-gradient(rgba(246,243,253,0), rgba(246,243,253,.94) 45%); }
+.more { display: none; }
+body.m.has-more .more { display: block; position: fixed; left: 50%; bottom: 68px; transform: translateX(-50%); z-index: 6; font-size: 12px; font-weight: 700; color: var(--violet); background: rgba(255,255,255,.92); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); pointer-events: none; animation: bob 1.6s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translate(-50%, -4px); } }
+body.m .tr { padding: 10px 0; }
+body.m .count { font-size: 12px; padding: 8px 12px; }
+body.m .btn { width: 40px; height: 40px; font-size: 18px; }
+body.m .hint { bottom: 64px; font-size: 12px; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .slide [data-a], .w > span, .badge { opacity: 1 !important; transform: none !important; }
@@ -535,6 +674,7 @@ body.capture .ui, body.capture .hint, body.capture .progress, body.capture .rota
     <button class="btn" id="fs" aria-label="Tela cheia">&#x26F6;</button>
   </div>
 </div>
+<p class="more" aria-hidden="true">↓ role para ver mais</p>
 <p class="hint" id="hint">Use as setas ← → ou clique na tela para avançar · F para tela cheia</p>
 
 <script>
@@ -543,7 +683,13 @@ body.capture .ui, body.capture .hint, body.capture .progress, body.capture .rota
   const stage = document.getElementById('stage');
   const slides = Array.from(document.querySelectorAll('.slide'));
   let cur = -1;
-  function fit() { stage.style.setProperty('--s', Math.min(innerWidth / 1920, innerHeight / 1080)); }
+  const hintEl = document.getElementById('hint');
+  function fit() {
+    const mob = innerWidth < innerHeight;
+    document.body.classList.toggle('m', mob);
+    hintEl.textContent = mob ? 'Deslize para o lado ou toque nas setas para avançar' : 'Use as setas ← → ou clique na tela para avançar · F para tela cheia';
+    stage.style.setProperty('--s', Math.min(innerWidth / 1920, innerHeight / 1080));
+  }
   addEventListener('resize', fit); fit();
 
   document.querySelectorAll('.split').forEach(el => {
@@ -590,7 +736,14 @@ body.capture .ui, body.capture .hint, body.capture .progress, body.capture .rota
     count.textContent = String(n + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
     prog.style.width = ((n + 1) / slides.length * 100) + '%';
     try { history.replaceState(null, '', '#slide-' + (n + 1)); } catch (e) {}
+    s.scrollTop = 0; checkMore();
   }
+  function checkMore() {
+    const s = slides[cur]; if (!s) return;
+    document.body.classList.toggle('has-more', document.body.classList.contains('m') && s.scrollHeight - s.clientHeight - s.scrollTop > 24);
+  }
+  slides.forEach(sl => sl.addEventListener('scroll', checkMore, { passive: true }));
+  addEventListener('resize', () => checkMore());
   window.__show = show;
   const next = () => show(cur + 1), prev = () => show(cur - 1);
   const toggleFs = () => { try { if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {}); else document.exitFullscreen(); } catch (e) {} };
@@ -603,11 +756,11 @@ body.capture .ui, body.capture .hint, body.capture .progress, body.capture .rota
     else if (e.key === 'Home') show(0); else if (e.key === 'End') show(slides.length - 1);
     else if (e.key === 'f' || e.key === 'F') toggleFs();
   });
-  let tx = null;
-  addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-  addEventListener('touchend', e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) (dx < 0 ? next : prev)(); tx = null; });
-  stage.addEventListener('click', e => { if (e.target.closest('a')) return; if (e.clientX > innerWidth * .5) next(); else prev(); });
-  setTimeout(() => document.getElementById('hint').classList.add('off'), 6000);
+  let tx = null, ty = null;
+  addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+  addEventListener('touchend', e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.3) (dx < 0 ? next : prev)(); tx = ty = null; });
+  stage.addEventListener('click', e => { if (e.target.closest('a') || document.body.classList.contains('m')) return; if (e.clientX > innerWidth * .5) next(); else prev(); });
+  setTimeout(() => { document.getElementById('hint').classList.add('off'); }, 6000);
 
   let mx = 0, my = 0;
   addEventListener('mousemove', e => {
