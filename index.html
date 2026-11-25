@@ -186,7 +186,7 @@ p { margin: 0; }
 .after b { color: var(--violet); }
 
 /* 15. investimento */
-.inv { display: grid; grid-template-columns: 860px 1fr; gap: 80px; align-items: center; }
+.inv { display: grid; grid-template-columns: 800px 1fr; gap: 70px; align-items: center; }
 .price { position: relative; padding: 56px 60px; border-radius: 44px; background: linear-gradient(125deg, #3B0F86, #6D28D9 55%, #8B5CF6); color: #FBF9FF; box-shadow: 0 40px 100px rgba(76,29,149,.35); overflow: hidden; }
 .price::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; background: linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.16), rgba(255,255,255,0)); animation: sheen 5s ease-in-out infinite 2s; }
 @keyframes sheen { 0% { left: -60%; } 40%, 100% { left: 130%; } }
@@ -205,11 +205,12 @@ p { margin: 0; }
 .burst.go i { animation: spark 1.2s var(--ease) forwards; }
 @keyframes spark { 0% { opacity: 1; transform: translate(0,0) scale(1); } 100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(.3); } }
 .right h3 { font-family: var(--display); font-size: 44px; line-height: 1.2; margin: 0; display: flex; align-items: center; gap: 16px; }
-.right p { font-size: 28px; line-height: 1.45; color: var(--ink-soft); margin-top: 16px; }
-.incl { margin-top: 30px; border-top: 1px solid var(--line); }
-.incl div { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 25px; display: flex; gap: 16px; align-items: center; }
+.right p.go { font-family: var(--display); font-weight: 700; font-size: 29px; color: var(--ink); margin: 20px 0 0; }
+.right p { font-size: 26px; line-height: 1.42; color: var(--ink-soft); margin-top: 14px; }
+.incl { margin-top: 22px; border-top: 1px solid var(--line); }
+.incl div { padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 25px; display: flex; gap: 16px; align-items: center; }
 .incl div::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--violet); flex: none; }
-.cta { display: inline-flex; align-items: center; gap: 14px; margin-top: 34px; padding: 22px 36px; border-radius: 999px; background: linear-gradient(110deg, #5B21B6, #7C3AED); color: #FBF9FF; font-weight: 700; font-size: 28px; text-decoration: none; box-shadow: 0 18px 40px rgba(91,33,182,.35); }
+.cta { display: inline-flex; align-items: center; gap: 14px; margin-top: 20px; padding: 22px 36px; border-radius: 999px; background: linear-gradient(110deg, #5B21B6, #7C3AED); color: #FBF9FF; font-weight: 700; font-size: 28px; text-decoration: none; box-shadow: 0 18px 40px rgba(91,33,182,.35); }
 .tel { display: block; margin-top: 16px; font-size: 24px; color: var(--ink-soft); }
 
 /* comandos */
@@ -300,7 +301,7 @@ body.capture .ui, body.capture .hint, body.capture .progress, body.capture .rota
     </div>
     <div>
       <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Decisões de RH tomadas no achismo, que depois viram multa, processo e retrabalho.</p></div>
-      <div class="q" data-a="right" style="--d:.8s"><p class="k">Pergunta para você</p><p>Quando sai uma regra nova, quem na sua empresa sabe dizer o que muda na prática? E quanto custa uma decisão errada do RH ou uma orientação errada da contabilidade?</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Pergunta para você</p><p>Quando sai uma regra nova, quem na sua empresa sabe dizer o que muda na prática? E quanto custa uma decisão errada do seu RH, ou uma orientação errada que ele recebe de uma contabilidade que não é especialista em transporte?</p></div>
     </div>
   </div>
 </section>
@@ -400,13 +401,13 @@ body.capture .ui, body.capture .hint, body.capture .progress, body.capture .rota
       <div class="disc" data-a style="--d:.5s"><div><span>Saúde, Segurança e Medicina do Trabalho no Transporte</span><b>20 h</b></div><div><span>Inteligência Artificial, Automação e Ferramentas de Produtividade no RH</span><b>30 h</b></div></div>
       <p class="k" data-a style="--d:.6s">O que o seu RH aprende</p>
       <ul class="learn">
-        <li data-a style="--d:.7s">Cuidar da saúde e da segurança do motorista e cumprir as normas de segurança do trabalho.</li>
+        <li data-a style="--d:.7s">Conduzir do jeito certo afastamentos, acidentes de trabalho e exames ocupacionais, e cumprir as normas de saúde e segurança no transporte.</li>
         <li data-a style="--d:.8s">Usar inteligência artificial e automação para tirar o trabalho repetitivo do DP.</li>
       </ul>
     </div>
     <div>
-      <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Afastamentos e acidentes que param o caminhão e geram passivo, e um DP que perde horas com tarefas manuais que poderiam ser automatizadas com inteligência artificial.</p></div>
-      <div class="q" data-a="right" style="--d:.8s"><p class="k">Perguntas para você</p><p>Quantos afastamentos a sua empresa teve no último ano? E quanto custou cada caminhão parado sem motorista?</p><p class="q2">Quantas horas por mês o seu RH gasta refazendo planilhas e corrigindo a folha? E quanto tempo economizaria se soubesse aplicar inteligência artificial do jeito certo?</p></div>
+      <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Afastamentos e acidentes conduzidos de forma errada, que viram multa e passivo trabalhista, e um DP que perde horas com tarefas manuais que poderiam ser automatizadas com inteligência artificial.</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Perguntas para você</p><p>Quanto custa para a sua empresa um afastamento ou acidente de trabalho conduzido de forma errada, que depois vira multa ou processo?</p><p class="q2">Quantas horas por mês o seu RH gasta refazendo planilhas e corrigindo a folha? E quanto tempo economizaria se soubesse aplicar inteligência artificial do jeito certo?</p></div>
     </div>
   </div>
 </section>
@@ -424,7 +425,7 @@ body.capture .ui, body.capture .hint, body.capture .progress, body.capture .rota
     </div>
     <div class="trio" data-a style="--d:1.3s">
       <div><b>12 meses</b><span>início em março de 2027</span></div>
-      <div><b>100% EAD</b><span>todo o conteúdo gravado, no horário do aluno</span></div>
+      <div><b>100% EAD</b><span>conteúdo gravado, para o aluno assistir, ler e fazer no tempo dele</span></div>
       <div><b>+ 1 aula ao vivo</b><span>por mês, de complemento, que também fica gravada</span></div>
     </div>
   </div>
@@ -459,7 +460,7 @@ body.capture .ui, body.capture .hint, body.capture .progress, body.capture .rota
     <div class="prof" data-a="flip" style="--d:.8s"><div class="ph"><img src="img/carlos.webp" alt="Foto de Carlos Eduardo Pereira"></div><p class="nm">Carlos Eduardo Pereira</p><p class="tt">Mestre e doutorando</p><p class="cv">Mestre em Inteligência de Negócios, doutorando em IA. Mais de 16 anos em grandes empresas.</p><p class="en"><b>Ensina:</b> IA e automação para ganhar tempo no RH.</p></div>
   </div>
   <div class="extras">
-    <div data-a style="--d:1s"><svg viewBox="0 0 24 24" fill="none" stroke="#6D28D9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z"/></svg><p><b>Aulas ao vivo todo mês.</b> Além de todo o conteúdo gravado, aulas ao vivo com os professores das disciplinas e com convidados especiais do setor. Também ficam gravadas.</p></div>
+    <div data-a style="--d:1s"><svg viewBox="0 0 24 24" fill="none" stroke="#6D28D9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z"/></svg><p><b>Aulas ao vivo todo mês.</b> Além do conteúdo 100% EAD, gravado para o aluno fazer no tempo dele, há aulas ao vivo com os professores das disciplinas e com convidados especiais do setor. Também ficam gravadas.</p></div>
     <div data-a style="--d:1.1s"><svg viewBox="0 0 24 24" fill="none" stroke="#6D28D9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg><p><b>Certificado reconhecido.</b> FABRANI, instituição autorizada pelo MEC. Título de especialista com validade nacional.</p></div>
   </div>
 </section>
@@ -470,7 +471,7 @@ body.capture .ui, body.capture .hint, body.capture .progress, body.capture .rota
   <h2 class="h2 split" data-start=".2">Antes de decidir, <span class="hl">a diretoria quer saber:</span></h2>
   <div class="faq">
     <div data-a style="--d:.5s"><h3>Quanto tempo leva?</h3><p>12 meses, com início em março de 2027. A cada módulo, o conteúdo já é aplicado na rotina da transportadora.</p></div>
-    <div data-a style="--d:.58s"><h3>Vai tirar o colaborador da operação?</h3><p>Não. Todo o conteúdo dos módulos é gravado, e ele estuda no horário que preferir. Além disso, tem 1 aula ao vivo por mês, que também fica gravada.</p></div>
+    <div data-a style="--d:.58s"><h3>Vai tirar o colaborador da operação?</h3><p>Não. O conteúdo é 100% EAD e gravado, disponível para ele assistir, ler e fazer no tempo dele. Além disso, tem 1 aula ao vivo por mês, que também fica gravada.</p></div>
     <div data-a style="--d:.66s"><h3>E se eu pagar e ele sair?</h3><p>O estudo de caso deixa uma solução aplicada dentro da sua empresa. E reter pessoas é justamente um dos temas do Módulo 03.</p></div>
     <div data-a style="--d:.74s"><h3>Por que não um MBA comum de RH?</h3><p>Porque um MBA genérico não ensina jornada do motorista, escala no transporte nem a relação sindical do setor.</p></div>
     <div data-a style="--d:.82s"><h3>É reconhecido pelo MEC?</h3><p>Sim. É ministrado pela FABRANI, instituição autorizada pelo MEC, e o título de especialista tem validade nacional.</p></div>
@@ -489,7 +490,7 @@ body.capture .ui, body.capture .hint, body.capture .progress, body.capture .rota
     <div data-a style="--d:.62s"><b>2</b><p>Quanto custou a última contratação errada, de alguém que não ficou nem três meses?</p></div>
     <div data-a style="--d:.74s"><b>3</b><p>Quanto foi pago em horas extras calculadas ou lançadas de forma errada, que poderiam ter sido evitadas?</p></div>
     <div data-a style="--d:.86s"><b>4</b><p>Quanto a empresa já pagou em acordos e processos trabalhistas?</p></div>
-    <div data-a style="--d:.98s"><b>5</b><p>Quanto custa uma decisão errada do RH ou uma orientação errada da contabilidade quando a regra muda?</p></div>
+    <div data-a style="--d:.98s"><b>5</b><p>Quanto custa uma decisão errada do RH, ou uma orientação errada de uma contabilidade que não é especialista em transporte, quando a regra muda?</p></div>
   </div>
   <p class="after" data-a style="--d:1.2s">Somadas, as respostas mostram quanto a sua transportadora pode economizar. Agora compare com <b>a condição da próxima tela.</b></p>
 </section>
@@ -508,14 +509,16 @@ body.capture .ui, body.capture .hint, body.capture .progress, body.capture .rota
     </div>
     <div class="right">
       <h3 data-a style="--d:.6s"><span class="live"></span>São só 20 bolsas</h3>
-      <p data-a style="--d:.7s">As bolsas são liberadas por ordem de fechamento: ficam com as 20 primeiras empresas que fecharem. E já temos mais empresas interessadas do que bolsas.</p>
+      <p data-a style="--d:.7s">As bolsas são liberadas por ordem de fechamento: ficam com as 20 primeiras empresas que fecharem. Já na pré-venda, antes mesmo do lançamento, temos mais empresas interessadas do que bolsas disponíveis.</p>
       <div class="incl" data-a style="--d:.85s">
         <div>6 módulos e 14 disciplinas do RH do transporte</div>
         <div>Corpo docente especialista e convidados do setor</div>
-        <div>Todo o conteúdo gravado + 1 aula ao vivo por mês</div>
+        <div>Conteúdo 100% EAD e gravado, no tempo do aluno</div>
+        <div>1 aula ao vivo por mês, que também fica gravada</div>
         <div>Estudo de caso aplicado na sua empresa</div>
         <div>Certificado com validade nacional (MEC)</div>
       </div>
+      <p class="go" data-a style="--d:.95s">Reserve agora e garanta a bolsa de 31% para a sua empresa.</p>
       <a class="cta" data-a style="--d:1s" href="https://wa.me/5549999257301" target="_blank" rel="noopener">Reservar a bolsa no WhatsApp</a>
       <span class="tel" data-a style="--d:1.05s">WhatsApp UNITRAN: (49) 9 9925-7301 · mba.unitran.org</span>
     </div>
