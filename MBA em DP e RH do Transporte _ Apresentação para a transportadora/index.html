@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MBA em DP e RH do Transporte | Apresentação para a transportadora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  /* Mesmo mundo da apresentação dos alunos: papel lilás, tinta violeta-noite, violeta UNITRAN, ciano de rede. Palco 16:9 que passa para o lado. */
+  --paper: #F6F3FD;
+  --ink: #1A1033;
+  --ink-soft: #544B70;
+  --violet: #6D28D9;
+  --violet-soft: #A78BFA;
+  --cyan: #19A9D8;
+  --line: #DED3F6;
+  --display: 'Sora', 'Trebuchet MS', Arial, sans-serif;
+  --body: 'Manrope', 'Segoe UI', Arial, sans-serif;
+  --ease: cubic-bezier(.2,.7,.2,1);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); overflow: hidden; }
+p { margin: 0; }
+
+.aurora { position: fixed; inset: -20%; pointer-events: none; z-index: 0; }
+.aurora i { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .55; }
+.aurora i:nth-child(1) { width: 46vw; height: 46vw; left: 55%; top: 5%; background: #C9B5FF; animation: drift1 22s ease-in-out infinite alternate; }
+.aurora i:nth-child(2) { width: 38vw; height: 38vw; left: 8%; top: 55%; background: #A7E3F7; opacity: .45; animation: drift2 26s ease-in-out infinite alternate; }
+.aurora i:nth-child(3) { width: 30vw; height: 30vw; left: 30%; top: 15%; background: #E9DDFF; animation: drift3 30s ease-in-out infinite alternate; }
+@keyframes drift1 { to { transform: translate(-12vw, 14vh) scale(1.15); } }
+@keyframes drift2 { to { transform: translate(14vw, -10vh) scale(1.1); } }
+@keyframes drift3 { to { transform: translate(10vw, 18vh) scale(.9); } }
+#net { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+
+.stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; transform: translate(-50%, -50%) scale(var(--s, .5)); z-index: 2; }
+.slide { position: absolute; inset: 0; padding: 110px 140px; opacity: 0; visibility: hidden; transform: scale(1.035); filter: blur(10px);
+  transition: opacity .8s var(--ease), transform 1s var(--ease), filter .8s var(--ease), visibility 0s linear .8s; }
+.slide.active { opacity: 1; visibility: visible; transform: none; filter: none; transition: opacity .8s var(--ease), transform 1s var(--ease), filter .8s var(--ease), visibility 0s; }
+.slide [data-a] { opacity: 0; transform: translateY(40px); transition: opacity .9s var(--ease) var(--d, 0s), transform 1s var(--ease) var(--d, 0s); }
+.slide [data-a="flip"] { transform: perspective(1200px) rotateY(-70deg) translateX(-40px); transform-origin: left center; }
+.slide [data-a="zoom"] { transform: scale(.85); }
+.slide [data-a="left"] { transform: translateX(-80px); }
+.slide [data-a="right"] { transform: translateX(80px); }
+.slide.active [data-a] { opacity: 1; transform: none; }
+.w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .08em; margin-bottom: -.08em; }
+.w > span { display: inline-block; transform: translateY(105%); transition: transform 1s var(--ease) var(--d, 0s); }
+.slide.active .w > span { transform: none; }
+
+.eyebrow { font-weight: 700; font-size: 24px; letter-spacing: .18em; text-transform: uppercase; color: var(--violet); margin: 0 0 24px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ""; width: 48px; height: 3px; border-radius: 3px; background: linear-gradient(90deg, var(--violet), var(--cyan)); }
+.display { font-family: var(--display); font-weight: 800; font-size: 80px; line-height: 1.04; letter-spacing: -.025em; margin: 0; text-wrap: balance; }
+.h2 { font-family: var(--display); font-weight: 700; font-size: 60px; line-height: 1.1; letter-spacing: -.02em; margin: 0 0 40px; text-wrap: balance; max-width: 1500px; }
+.lead { font-size: 30px; line-height: 1.5; color: var(--ink-soft); margin-top: 28px; }
+.hl, .hl > span { background: linear-gradient(90deg, #6D28D9 0%, #A855F7 30%, #19A9D8 60%, #6D28D9 100%); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 7s linear infinite; }
+@keyframes shimmer { to { background-position: 300% 0; } }
+.src { position: absolute; left: 140px; bottom: 60px; width: 1500px; font-size: 18px; color: #8A82A6; }
+
+/* 1. capa */
+.logos { display: flex; align-items: center; gap: 28px; margin-bottom: 64px; }
+.logos img { height: 84px; width: auto; }
+.logos img.lf { height: 46px; }
+.logos span { font-family: var(--display); font-size: 36px; color: var(--violet-soft); }
+.cover-left { position: relative; z-index: 3; width: 880px; }
+.ask { margin-top: 36px; font-family: var(--display); font-weight: 600; font-size: 36px; line-height: 1.32; color: var(--ink); }
+.ask b { color: var(--violet); }
+.pill { display: inline-flex; align-items: center; gap: 14px; margin-top: 44px; padding: 16px 28px; border-radius: 999px; background: rgba(255,255,255,.72); border: 1px solid var(--line); box-shadow: 0 18px 50px rgba(76,29,149,.12); font-weight: 700; font-size: 26px; color: var(--violet); }
+.live { width: 14px; height: 14px; border-radius: 50%; background: var(--violet); animation: pulse 2s infinite; flex: none; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(109,40,217,.5); } 70% { box-shadow: 0 0 0 16px rgba(109,40,217,0); } 100% { box-shadow: 0 0 0 0 rgba(109,40,217,0); } }
+.cover-visual { position: absolute; right: 10px; top: 150px; width: 820px; height: 820px; }
+.orb { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cover-photo { position: absolute; left: 50px; top: 215px; width: 720px; height: auto; animation: floaty 7s ease-in-out infinite; }
+@keyframes floaty { 50% { transform: translateY(-16px); } }
+
+/* 2. por que agora */
+.rows { border-top: 1px solid var(--line); margin-top: 8px; }
+.rowx { display: grid; grid-template-columns: 330px 1fr; gap: 40px; align-items: center; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.rowx .n { font-family: var(--display); font-weight: 800; font-size: 50px; color: var(--violet); line-height: 1; }
+.rowx p { font-size: 32px; line-height: 1.4; }
+.band { margin-top: 40px; padding: 30px 40px; border-radius: 28px; background: linear-gradient(110deg, #3B0F86, #6D28D9 60%, #8B5CF6); color: #FBF9FF; font-family: var(--display); font-weight: 600; font-size: 32px; line-height: 1.35; box-shadow: 0 30px 80px rgba(76,29,149,.3); }
+
+/* 3. visão geral dos módulos */
+.tbl-head { display: grid; grid-template-columns: 90px 520px 1fr 560px; gap: 32px; font-size: 20px; letter-spacing: .14em; text-transform: uppercase; color: #8A82A6; font-weight: 700; padding-bottom: 12px; }
+.tbl { border-top: 1px solid var(--line); }
+.tr { display: grid; grid-template-columns: 90px 520px 1fr 560px; gap: 32px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.tr .num { font-family: var(--display); font-weight: 800; font-size: 48px; line-height: 1; background: linear-gradient(135deg, #C4B5FD, #6D28D9); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.tr .t { font-family: var(--display); font-weight: 700; font-size: 28px; line-height: 1.2; }
+.tr .t small { display: block; font-family: var(--body); color: var(--violet); font-size: 20px; font-weight: 700; margin-top: 2px; }
+.tr .l { font-size: 24px; color: var(--ink-soft); line-height: 1.35; }
+.tr .res { font-size: 24px; font-weight: 700; line-height: 1.3; padding-left: 18px; border-left: 4px solid var(--violet); }
+
+/* 4-9. detalhe do módulo */
+.mod-grid { display: grid; grid-template-columns: 1fr 720px; gap: 70px; align-items: start; }
+.wm { position: absolute; right: 100px; top: 40px; font-family: var(--display); font-weight: 800; font-size: 420px; line-height: 1; color: rgba(109,40,217,.06); pointer-events: none; }
+.disc { border-top: 1px solid var(--line); margin-bottom: 34px; }
+.disc div { display: flex; justify-content: space-between; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 26px; }
+.disc b { color: #9A92B5; font-family: var(--body); font-weight: 500; font-size: 20px; white-space: nowrap; align-self: center; }
+.k { font-size: 20px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--violet); margin-bottom: 14px; }
+.learn { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+.learn li { position: relative; padding-left: 40px; font-size: 28px; line-height: 1.4; }
+.learn li::before { content: ""; position: absolute; left: 0; top: 14px; width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, #8B5CF6, #5B21B6); }
+.pain { padding: 44px 44px 40px; border-radius: 32px; background: linear-gradient(130deg, #3B0F86, #6D28D9 60%, #8B5CF6); color: #FBF9FF; box-shadow: 0 34px 90px rgba(76,29,149,.32); }
+.pain .k { color: #DDD0FF; }
+.pain .p { font-family: var(--display); font-weight: 700; font-size: 38px; line-height: 1.25; }
+.pain .f { margin-top: 24px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.22); font-size: 24px; line-height: 1.45; color: #EEE8FF; }
+.pain .f small { display: block; font-size: 18px; color: #CFC3FF; margin-top: 6px; }
+.q { margin-top: 30px; padding: 26px 30px; border-radius: 24px; background: rgba(255,255,255,.78); border: 1px solid var(--line); }
+.q .k { margin-bottom: 8px; }
+.dense .pain { padding: 36px 40px 34px; }
+.dense .pain .p { font-size: 32px; }
+.dense .pain .f { margin-top: 18px; padding-top: 16px; font-size: 22px; }
+.dense .q { margin-top: 24px; }
+.dense .q p { font-size: 26px; }
+.q .q2 { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+.q p { font-family: var(--display); font-weight: 600; font-size: 30px; line-height: 1.3; color: var(--ink); }
+
+/* 10. estudo de caso */
+.s-caso { background: linear-gradient(120deg, #2E1065, #5B21B6 45%, #7C3AED 80%, #4F46E5); background-size: 200% 200%; animation: violetflow 14s ease-in-out infinite alternate; color: #FBF9FF; }
+@keyframes violetflow { to { background-position: 100% 100%; } }
+.s-caso .eyebrow { color: #DDD0FF; }
+.s-caso .eyebrow::before { background: linear-gradient(90deg, #DDD0FF, #7DD3FC); }
+.caso-text { position: absolute; left: 140px; top: 0; bottom: 0; width: 1000px; display: flex; flex-direction: column; justify-content: center; }
+.caso-text .hl, .caso-text .hl > span { background: linear-gradient(90deg, #E9D5FF, #7DD3FC, #E9D5FF); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; }
+.steps { margin-top: 30px; border-top: 1px solid rgba(255,255,255,.22); }
+.steps div { display: grid; grid-template-columns: 60px 1fr; gap: 16px; align-items: center; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,.22); font-size: 30px; line-height: 1.35; }
+.steps b { font-family: var(--display); font-size: 40px; color: #DDD0FF; }
+.trio { display: flex; margin-top: 34px; }
+.trio div { padding: 0 34px; border-left: 1px solid rgba(255,255,255,.3); }
+.trio div:first-child { padding-left: 0; border-left: 0; flex: none; }
+.trio div { flex: 1 1 0; }
+.trio b { white-space: nowrap; }
+.trio b { display: block; font-family: var(--display); font-size: 36px; }
+.trio span { font-size: 22px; color: #DDD0FF; }
+.caso-photo { position: absolute; right: 90px; top: 130px; width: 640px; }
+.caso-photo img { width: 100%; height: auto; animation: floaty 9s ease-in-out infinite; }
+
+/* 11. Ariel */
+.ariel-photo { position: absolute; left: 110px; top: 120px; width: 600px; }
+.ariel-photo::before { content: ""; position: absolute; inset: 14% -4% -2%; border-radius: 50%; background: radial-gradient(circle, rgba(167,139,250,.55), rgba(167,139,250,0) 66%); filter: blur(10px); }
+.ariel-photo img { position: relative; width: 100%; height: auto; }
+.ariel-text { position: absolute; left: 790px; right: 140px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; }
+.ariel-text .name { font-family: var(--display); font-weight: 800; font-size: 72px; line-height: 1.05; }
+.ariel-text .role { font-size: 32px; line-height: 1.4; margin-top: 18px; }
+.ariel-text .cv { font-size: 24px; color: var(--ink-soft); margin-top: 12px; }
+.stats { display: flex; margin-top: 34px; }
+.stats div { padding: 0 40px; border-left: 1px solid var(--line); }
+.stats div:first-child { padding-left: 0; border-left: 0; }
+.stats b { display: block; font-family: var(--display); font-weight: 800; font-size: 64px; line-height: 1.05; color: var(--violet); font-variant-numeric: tabular-nums; }
+.stats span { font-size: 22px; color: var(--ink-soft); }
+.stats b span { font-size: inherit; color: inherit; }
+.teach { margin-top: 36px; padding: 26px 30px; border-left: 5px solid var(--violet); background: rgba(255,255,255,.6); border-radius: 0 20px 20px 0; font-size: 28px; line-height: 1.45; }
+.teach b { color: var(--violet); }
+
+/* 12. corpo docente */
+.team { display: grid; grid-template-columns: repeat(5, 1fr); gap: 34px; }
+.prof { text-align: center; perspective: 1000px; }
+.prof .ph { position: relative; width: 220px; height: 293px; margin: 0 auto; }
+.prof .ph::before { content: ""; position: absolute; inset: 20px -16px -6px; border-radius: 50%; background: radial-gradient(circle, rgba(167,139,250,.5), rgba(167,139,250,0) 65%); filter: blur(8px); }
+.prof .ph img { position: relative; width: 100%; height: 100%; object-fit: contain; }
+.prof .nm { font-family: var(--display); font-weight: 700; font-size: 27px; line-height: 1.2; margin-top: 12px; }
+.prof .tt { font-size: 18px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--violet); margin-top: 4px; }
+.prof .cv { font-size: 19px; line-height: 1.4; color: var(--ink-soft); margin-top: 10px; }
+.prof .en { font-size: 21px; line-height: 1.4; margin-top: 12px; font-weight: 600; }
+.prof .en b { color: var(--violet); }
+.extras { display: grid; grid-template-columns: 1.4fr 1fr; gap: 30px; margin-top: 30px; }
+.extras div { display: flex; align-items: center; gap: 20px; padding: 22px 28px; border-radius: 22px; background: rgba(255,255,255,.72); border: 1px solid var(--line); font-size: 24px; line-height: 1.35; }
+.extras svg { flex: none; width: 46px; height: 46px; }
+.extras b { font-family: var(--display); }
+
+/* 13. perguntas */
+.faq { display: grid; grid-template-columns: 1fr 1fr; gap: 0 80px; border-top: 1px solid var(--line); }
+.faq div { padding: 24px 0; border-bottom: 1px solid var(--line); }
+.faq h3 { font-family: var(--display); font-size: 32px; line-height: 1.25; margin: 0; }
+.faq p { margin-top: 8px; font-size: 25px; line-height: 1.4; color: var(--ink-soft); }
+
+/* 14. vale a pena */
+.asks { border-top: 1px solid var(--line); }
+.asks div { display: grid; grid-template-columns: 80px 1fr; gap: 24px; align-items: center; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.asks b { font-family: var(--display); font-weight: 800; font-size: 44px; background: linear-gradient(135deg, #C4B5FD, #6D28D9); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.asks p { font-family: var(--display); font-weight: 600; font-size: 34px; line-height: 1.3; }
+.after { margin-top: 34px; font-size: 30px; color: var(--ink-soft); }
+.after b { color: var(--violet); }
+
+/* 15. investimento */
+.inv { display: grid; grid-template-columns: 860px 1fr; gap: 80px; align-items: center; }
+.price { position: relative; padding: 56px 60px; border-radius: 44px; background: linear-gradient(125deg, #3B0F86, #6D28D9 55%, #8B5CF6); color: #FBF9FF; box-shadow: 0 40px 100px rgba(76,29,149,.35); overflow: hidden; }
+.price::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; background: linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.16), rgba(255,255,255,0)); animation: sheen 5s ease-in-out infinite 2s; }
+@keyframes sheen { 0% { left: -60%; } 40%, 100% { left: 130%; } }
+.price .lbl { font-size: 22px; letter-spacing: .14em; text-transform: uppercase; color: #DDD0FF; font-weight: 700; }
+.old { position: relative; display: inline-block; font-family: var(--display); font-weight: 700; font-size: 52px; margin-top: 8px; color: #E4DBFF; }
+.old::after { content: ""; position: absolute; left: -3%; right: -3%; top: 52%; height: 7px; border-radius: 7px; background: #7DD3FC; transform: scaleX(0); transform-origin: left; transition: transform .7s var(--ease) .7s; }
+.slide.active .old::after { transform: scaleX(1); }
+.badge { display: flex; align-items: center; gap: 18px; margin-top: 22px; padding: 12px 26px 12px 12px; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); font-weight: 700; font-size: 26px; width: fit-content; opacity: 0; transform: scale(.85); transition: opacity .5s var(--ease) 1.2s, transform .7s cubic-bezier(.3,1.5,.5,1) 1.2s; }
+.slide.active .badge { opacity: 1; transform: none; }
+.badge b { font-family: var(--display); font-size: 36px; background: #FBF9FF; color: #5B21B6; padding: 4px 18px; border-radius: 999px; }
+.final { font-family: var(--display); font-weight: 800; font-size: 132px; line-height: 1; letter-spacing: -.03em; margin-top: 28px; font-variant-numeric: tabular-nums; }
+.final small { font-size: 56px; letter-spacing: 0; }
+.cash { font-size: 36px; font-weight: 700; margin-top: 14px; }
+.burst { position: absolute; left: 560px; top: 300px; width: 0; height: 0; pointer-events: none; }
+.burst i { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--c); opacity: 0; }
+.burst.go i { animation: spark 1.2s var(--ease) forwards; }
+@keyframes spark { 0% { opacity: 1; transform: translate(0,0) scale(1); } 100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(.3); } }
+.right h3 { font-family: var(--display); font-size: 44px; line-height: 1.2; margin: 0; display: flex; align-items: center; gap: 16px; }
+.right p { font-size: 28px; line-height: 1.45; color: var(--ink-soft); margin-top: 16px; }
+.incl { margin-top: 30px; border-top: 1px solid var(--line); }
+.incl div { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 25px; display: flex; gap: 16px; align-items: center; }
+.incl div::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: var(--violet); flex: none; }
+.cta { display: inline-flex; align-items: center; gap: 14px; margin-top: 34px; padding: 22px 36px; border-radius: 999px; background: linear-gradient(110deg, #5B21B6, #7C3AED); color: #FBF9FF; font-weight: 700; font-size: 28px; text-decoration: none; box-shadow: 0 18px 40px rgba(91,33,182,.35); }
+.tel { display: block; margin-top: 16px; font-size: 24px; color: var(--ink-soft); }
+
+/* comandos */
+.ui { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; padding: 14px 22px; pointer-events: none; }
+.ui > * { pointer-events: auto; }
+.progress { position: fixed; left: 0; top: 0; height: 4px; z-index: 6; background: linear-gradient(90deg, #6D28D9, #19A9D8); transition: width .6s var(--ease); }
+.btns { display: flex; gap: 10px; }
+.btn { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: rgba(255,255,255,.8); color: var(--violet); font-size: 20px; cursor: pointer; display: grid; place-items: center; transition: background .2s, transform .2s; }
+.btn:hover { background: #fff; transform: translateY(-2px); }
+.btn:focus-visible { outline: 3px solid var(--violet); outline-offset: 2px; }
+.count { font-family: var(--display); font-weight: 600; font-size: 15px; color: var(--ink-soft); background: rgba(255,255,255,.75); padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line); }
+.hint { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 6; font-size: 14px; color: var(--ink-soft); background: rgba(255,255,255,.9); padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); transition: opacity 1s; white-space: nowrap; }
+.hint.off { opacity: 0; pointer-events: none; }
+.rotate { display: none; position: fixed; left: 12px; right: 12px; top: 12px; z-index: 7; padding: 10px 14px; border-radius: 14px; background: rgba(26,16,51,.88); color: #fff; font-size: 13px; text-align: center; }
+@media (orientation: portrait) and (max-width: 700px) { .rotate { display: block; } }
+body.capture .ui, body.capture .hint, body.capture .progress, body.capture .rotate { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .slide [data-a], .w > span, .badge { opacity: 1 !important; transform: none !important; }
+  .old::after { transform: scaleX(1) !important; }
+}
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<canvas id="net" aria-hidden="true"></canvas>
+<div class="progress" id="progress"></div>
+<p class="rotate">Para ver melhor, gire o celular na horizontal.</p>
+
+<main class="stage" id="stage">
+
+<!-- 1. CAPA -->
+<section class="slide" aria-label="Capa">
+  <div class="cover-visual par" data-depth="16">
+    <canvas class="orb" data-orb aria-hidden="true"></canvas>
+    <img class="cover-photo" src="img/truck-cover.webp" alt="Caminhão em uma rodovia">
+  </div>
+  <div class="cover-left">
+    <div class="logos" data-a style="--d:.1s"><img src="img/logo-unitran.png" alt="UNITRAN, Universidade do Transporte e Logística"><span>×</span><img class="lf" src="img/logo-fabrani.png" alt="FABRANI"></div>
+    <h1 class="display split" data-start=".3">MBA em Departamento Pessoal e <span class="hl">RH do Transporte</span></h1>
+    <p class="ask" data-a style="--d:1.2s">A partir de dezembro, as regras de jornada e de folha mudam, e seguem mudando em 2027. <b>O RH da sua transportadora está preparado?</b></p>
+    <p class="pill" data-a style="--d:1.5s"><span class="live"></span>Início em março de 2027 · 12 meses · 100% EAD</p>
+  </div>
+</section>
+
+<!-- 2. POR QUE AGORA -->
+<section class="slide" aria-label="Por que agora">
+  <p class="eyebrow" data-a style="--d:.1s">Por que agora</p>
+  <h2 class="h2 split" data-start=".2">Depois do diesel, o pessoal está <span class="hl">entre os maiores custos</span> da sua transportadora.</h2>
+  <div class="rows">
+    <div class="rowx" data-a style="--d:.8s"><span class="n">Dez/2026</span><p>A jornada semanal cai de 44 para 42 horas, sem redução de salário.</p></div>
+    <div class="rowx" data-a style="--d:.95s"><span class="n">Dez/2027</span><p>Nova redução, para 40 horas semanais.</p></div>
+    <div class="rowx" data-a style="--d:1.1s"><span class="n">O efeito</span><p>Menos horas com o mesmo salário: cada hora de trabalho fica mais cara, e a jornada dos motoristas precisa ser ajustada.</p></div>
+  </div>
+  <p class="band" data-a style="--d:1.3s">Com o custo maior, cada erro de jornada, de folha ou de contratação pesa mais no caixa. Por isso o seu time de RH e DP precisa estar preparado.</p>
+  <p class="src">Fontes: Emenda Constitucional nº 141/2026 (regras de transição em julgamento no STF); estrutura de custos do transporte rodoviário de cargas, NTC&amp;Logística.</p>
+</section>
+
+<!-- 3. VISÃO GERAL -->
+<section class="slide" aria-label="Os 6 módulos">
+  <p class="eyebrow" data-a style="--d:.1s">O que o seu RH vai aprender</p>
+  <h2 class="h2 split" data-start=".2">6 módulos. Cada um resolve <span class="hl">um problema real do transporte.</span></h2>
+  <div class="tbl-head" data-a style="--d:.5s"><span></span><span>Módulo</span><span>O que aprende</span><span>O problema que resolve</span></div>
+  <div class="tbl">
+    <div class="tr" data-a style="--d:.55s"><span class="num">01</span><p class="t">A Gestão de Pessoas e o Direito<small>40 horas</small></p><p class="l">As regras trabalhistas aplicadas ao transporte de cargas.</p><p class="res">Decisões de RH no achismo, que viram multa e processo</p></div>
+    <div class="tr" data-a style="--d:.65s"><span class="num">02</span><p class="t">Formação do Contrato<small>90 horas</small></p><p class="l">Recrutamento, perfil comportamental, admissão e eSocial.</p><p class="res">Altos custos com rotatividade e contratação errada</p></div>
+    <div class="tr" data-a style="--d:.75s"><span class="num">03</span><p class="t">Gestão e Desenvolvimento<small>45 horas</small></p><p class="l">Gestão estratégica de pessoas e treinamento.</p><p class="res">Perda de bons profissionais e dificuldade para reter motoristas</p></div>
+    <div class="tr" data-a style="--d:.85s"><span class="num">04</span><p class="t">Trabalho e Remuneração<small>80 horas</small></p><p class="l">Jornada do motorista, salário e folha de pagamento.</p><p class="res">Horas extras pagas errado e folha fora da nova escala</p></div>
+    <div class="tr" data-a style="--d:.95s"><span class="num">05</span><p class="t">Rescisão, Conformidade e Prevenção<small>55 horas</small></p><p class="l">Rescisão, defesa preventiva e compliance trabalhista.</p><p class="res">Passivo trabalhista: processos e acordos que poderiam ser evitados</p></div>
+    <div class="tr" data-a style="--d:1.05s"><span class="num">06</span><p class="t">Segurança, Saúde e Tecnologia<small>50 horas</small></p><p class="l">Saúde e segurança no transporte, IA e automação no RH.</p><p class="res">Afastamentos, riscos de segurança e retrabalho no DP</p></div>
+  </div>
+</section>
+
+<!-- 4. MÓDULO 01 -->
+<section class="slide" aria-label="Módulo 01">
+  <span class="wm" aria-hidden="true">01</span>
+  <p class="eyebrow" data-a style="--d:.1s">Módulo 01 · 40 horas</p>
+  <h2 class="h2 split" data-start=".2">A Gestão de Pessoas e o Direito</h2>
+  <div class="mod-grid">
+    <div>
+      <div class="disc" data-a style="--d:.5s"><div><span>Ambientação e Metodologia do MBA</span><b>10 h</b></div><div><span>Introdução ao Direito do Trabalho Aplicado ao Transporte</span><b>30 h</b></div></div>
+      <p class="k" data-a style="--d:.6s">O que o seu RH aprende</p>
+      <ul class="learn">
+        <li data-a style="--d:.7s">As regras trabalhistas que valem para o transporte de cargas, explicadas para quem decide no dia a dia do RH.</li>
+        <li data-a style="--d:.8s">Como ler uma regra nova e entender o que ela muda na prática dentro da transportadora.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Decisões de RH tomadas no achismo, que depois viram multa, processo e retrabalho.</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Pergunta para você</p><p>Quando sai uma regra nova, quem na sua empresa sabe dizer o que muda na prática? E quanto custa uma decisão errada do RH ou uma orientação errada da contabilidade?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. MÓDULO 02 -->
+<section class="slide" aria-label="Módulo 02">
+  <span class="wm" aria-hidden="true">02</span>
+  <p class="eyebrow" data-a style="--d:.1s">Módulo 02 · 90 horas</p>
+  <h2 class="h2 split" data-start=".2">Formação do Contrato</h2>
+  <div class="mod-grid">
+    <div>
+      <div class="disc" data-a style="--d:.5s"><div><span>Recrutamento, Seleção e Perfil Comportamental</span><b>35 h</b></div><div><span>Admissão e Contrato de Trabalho</span><b>30 h</b></div><div><span>eSocial e Rotinas de Departamento Pessoal</span><b>25 h</b></div></div>
+      <p class="k" data-a style="--d:.6s">O que o seu RH aprende</p>
+      <ul class="learn">
+        <li data-a style="--d:.7s">Recrutar e selecionar motoristas pelo perfil certo, com análise comportamental.</li>
+        <li data-a style="--d:.8s">Admitir com o contrato correto e manter o eSocial e as rotinas do DP em dia.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Altos custos com rotatividade e com contratação errada.</p><p class="f">Cada motorista que sai gera rescisão, recrutamento, exames, toxicológico, integração e caminhão parado até a reposição. Uma estimativa conservadora do setor fica entre R$ 1.000 e R$ 2.000 por saída.</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Pergunta para você</p><p>Quantos motoristas saíram da sua empresa nos últimos 12 meses? Multiplique por esse valor.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. MÓDULO 03 -->
+<section class="slide" aria-label="Módulo 03">
+  <span class="wm" aria-hidden="true">03</span>
+  <p class="eyebrow" data-a style="--d:.1s">Módulo 03 · 45 horas</p>
+  <h2 class="h2 split" data-start=".2">Gestão e Desenvolvimento</h2>
+  <div class="mod-grid">
+    <div>
+      <div class="disc" data-a style="--d:.5s"><div><span>Gestão de Gente e Gestão Estratégica de RH</span><b>25 h</b></div><div><span>Treinamento e Desenvolvimento</span><b>20 h</b></div></div>
+      <p class="k" data-a style="--d:.6s">O que o seu RH aprende</p>
+      <ul class="learn">
+        <li data-a style="--d:.7s">Criar ações de retenção, carreira e reconhecimento para motoristas e equipe.</li>
+        <li data-a style="--d:.8s">Treinar e desenvolver as pessoas e as lideranças da transportadora.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Perda de bons profissionais e dificuldade para reter motoristas.</p><p class="f">88% das empresas do transporte de cargas relatam dificuldade para contratar motoristas. Quem já está na empresa vale mais do que nunca.<small>Fonte: NTC&amp;Logística, pesquisa de 2025.</small></p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Pergunta para você</p><p>Quantos bons profissionais você perdeu este ano para a concorrência por uma diferença pequena de salário?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. MÓDULO 04 -->
+<section class="slide" aria-label="Módulo 04">
+  <span class="wm" aria-hidden="true">04</span>
+  <p class="eyebrow" data-a style="--d:.1s">Módulo 04 · 80 horas</p>
+  <h2 class="h2 split" data-start=".2">Trabalho e Remuneração</h2>
+  <div class="mod-grid">
+    <div>
+      <div class="disc" data-a style="--d:.5s"><div><span>Jornada de Trabalho no Transporte Rodoviário de Cargas</span><b>40 h</b></div><div><span>Salário e Remuneração</span><b>20 h</b></div><div><span>Folha de Pagamento</span><b>20 h</b></div></div>
+      <p class="k" data-a style="--d:.6s">O que o seu RH aprende</p>
+      <ul class="learn">
+        <li data-a style="--d:.7s">Calcular e controlar a jornada do motorista: tempo de direção, descanso, espera e hora extra.</li>
+        <li data-a style="--d:.8s">Montar salário e folha de pagamento pensados para o transporte e adaptados à nova escala.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Horas extras pagas errado e uma folha que não acompanha a nova escala.</p><p class="f">Hora extra é o assunto número 1 das ações trabalhistas no Brasil.<small>Fonte: Tribunal Superior do Trabalho (TST), 2025.</small></p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Pergunta para você</p><p>Quanto a sua empresa paga por mês em horas extras calculadas ou lançadas de forma errada? É um gasto que poderia ser evitado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. MÓDULO 05 -->
+<section class="slide dense" aria-label="Módulo 05">
+  <span class="wm" aria-hidden="true">05</span>
+  <p class="eyebrow" data-a style="--d:.1s">Módulo 05 · 55 horas</p>
+  <h2 class="h2 split" data-start=".2">Rescisão, Conformidade e Prevenção</h2>
+  <div class="mod-grid">
+    <div>
+      <div class="disc" data-a style="--d:.5s"><div><span>Rescisão, Quitação e Contencioso Preventivo</span><b>40 h</b></div><div><span>Compliance Trabalhista</span><b>15 h</b></div></div>
+      <p class="k" data-a style="--d:.6s">O que o seu RH aprende</p>
+      <ul class="learn">
+        <li data-a style="--d:.7s">Fazer rescisões e acertos finais sem deixar brechas.</li>
+        <li data-a style="--d:.8s">Organizar ponto, documentos e acordos para que a empresa tenha como se defender.</li>
+        <li data-a style="--d:.9s">Criar uma rotina de conformidade que evita o processo antes que ele aconteça.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Passivo trabalhista: processos, acordos e condenações que poderiam ter sido evitados e que chegam depois que o funcionário já saiu.</p><p class="f">Em 2025 foram 2,47 milhões de novas ações trabalhistas no Brasil.<small>Fonte: Tribunal Superior do Trabalho (TST).</small></p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Pergunta para você</p><p>Quanto a sua empresa já pagou em acordos e processos trabalhistas? E quanto poderia economizar se os desligamentos e acertos fossem feitos do jeito certo?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. MÓDULO 06 -->
+<section class="slide dense" aria-label="Módulo 06">
+  <span class="wm" aria-hidden="true">06</span>
+  <p class="eyebrow" data-a style="--d:.1s">Módulo 06 · 50 horas</p>
+  <h2 class="h2 split" data-start=".2">Segurança, Saúde e Tecnologia</h2>
+  <div class="mod-grid">
+    <div>
+      <div class="disc" data-a style="--d:.5s"><div><span>Saúde, Segurança e Medicina do Trabalho no Transporte</span><b>20 h</b></div><div><span>Inteligência Artificial, Automação e Ferramentas de Produtividade no RH</span><b>30 h</b></div></div>
+      <p class="k" data-a style="--d:.6s">O que o seu RH aprende</p>
+      <ul class="learn">
+        <li data-a style="--d:.7s">Cuidar da saúde e da segurança do motorista e cumprir as normas de segurança do trabalho.</li>
+        <li data-a style="--d:.8s">Usar inteligência artificial e automação para tirar o trabalho repetitivo do DP.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Afastamentos e acidentes que param o caminhão e geram passivo, e um DP que perde horas com tarefas manuais que poderiam ser automatizadas com inteligência artificial.</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Perguntas para você</p><p>Quantos afastamentos a sua empresa teve no último ano? E quanto custou cada caminhão parado sem motorista?</p><p class="q2">Quantas horas por mês o seu RH gasta refazendo planilhas e corrigindo a folha? E quanto tempo economizaria se soubesse aplicar inteligência artificial do jeito certo?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. ESTUDO DE CASO -->
+<section class="slide s-caso" aria-label="Estudo de caso">
+  <div class="caso-photo par" data-depth="16" data-a="right" style="--d:.3s"><img src="img/truck2.webp" alt="Caminhão em uma rodovia vista de cima"></div>
+  <div class="caso-text">
+    <p class="eyebrow" data-a style="--d:.1s">Estudo de caso aplicado</p>
+    <h2 class="h2 split" data-start=".2" style="margin-bottom:10px">Em 12 meses, resultado <span class="hl">dentro da sua empresa.</span></h2>
+    <div class="steps">
+      <div data-a style="--d:.8s"><b>1</b><span>Você escolhe um problema real da transportadora.</span></div>
+      <div data-a style="--d:.95s"><b>2</b><span>O seu RH estuda esse problema durante o MBA.</span></div>
+      <div data-a style="--d:1.1s"><b>3</b><span>A solução é aplicada na sua empresa, e a cada módulo o conteúdo já vai para a rotina.</span></div>
+    </div>
+    <div class="trio" data-a style="--d:1.3s">
+      <div><b>12 meses</b><span>início em março de 2027</span></div>
+      <div><b>100% EAD</b><span>todo o conteúdo gravado, no horário do aluno</span></div>
+      <div><b>+ 1 aula ao vivo</b><span>por mês, de complemento, que também fica gravada</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. ARIEL -->
+<section class="slide" aria-label="Ariel Vanquisher">
+  <div class="ariel-photo" data-a="zoom" style="--d:.2s"><img src="img/ariel.webp" alt="Foto de Ariel Vanquisher"></div>
+  <div class="ariel-text">
+    <p class="eyebrow" data-a style="--d:.1s">Quem vai ensinar o seu RH</p>
+    <p class="name split" data-start=".25">Ariel Vanquisher</p>
+    <p class="role" data-a style="--d:.6s">Advogado especialista em direito do trabalho e regulatório do transporte de cargas: jornada, folha e passivo trabalhista. Também é transportador.</p>
+    <p class="cv" data-a style="--d:.7s">Mestre em Direito (UFSC) e LLM em Direito de Empresa (FGV). Professor de diversos MBAs.</p>
+    <div class="stats" data-a style="--d:.85s">
+      <div><b><span data-count="800">800</span>+</b><span>transportadoras assessoradas</span></div>
+      <div><b><span data-count="15">15</span> mil</b><span>alunos, aproximadamente</span></div>
+      <div><b><span data-count="28">28</span>+</b><span>anos de experiência</span></div>
+    </div>
+    <p class="teach" data-a style="--d:1s"><b>No MBA, Ariel ensina</b> como calcular e controlar a jornada do motorista, como montar a folha do transporte, como fazer rescisões seguras e como prevenir processos trabalhistas.</p>
+  </div>
+</section>
+
+<!-- 12. CORPO DOCENTE -->
+<section class="slide" aria-label="Corpo docente">
+  <p class="eyebrow" data-a style="--d:.1s">Corpo docente</p>
+  <h2 class="h2 split" data-start=".2">Um especialista <span class="hl">para cada área do RH.</span></h2>
+  <div class="team">
+    <div class="prof" data-a="flip" style="--d:.4s"><div class="ph"><img src="img/thamires.webp" alt="Foto de Thamires de Freitas"></div><p class="nm">Thamires de Freitas</p><p class="tt">Especialista</p><p class="cv">Economista (PUC-SP), especialista em Pessoas (Mackenzie), analista DISC. 20 anos em gestão de pessoas.</p><p class="en"><b>Ensina:</b> recrutar pelo perfil certo e desenvolver a equipe.</p></div>
+    <div class="prof" data-a="flip" style="--d:.5s"><div class="ph"><img src="img/lucimar.webp" alt="Foto de Lucimar Angela Frigeri"></div><p class="nm">Lucimar Angela Frigeri</p><p class="tt">Mestre</p><p class="cv">Contadora, mestre em Administração (Unoesc). Controladoria e custos em empresas de transporte.</p><p class="en"><b>Ensina:</b> controlar custos com pessoal, salário e remuneração.</p></div>
+    <div class="prof" data-a="flip" style="--d:.6s"><div class="ph"><img src="img/luiz.webp" alt="Foto de Luiz Henrique Santos"></div><p class="nm">Luiz Henrique Santos</p><p class="tt">Mestre e doutorando</p><p class="cv">Mestre em Psicologia do Trabalho, doutorando em Administração, MBA em Gestão de Pessoas.</p><p class="en"><b>Ensina:</b> gestão estratégica de pessoas e retenção.</p></div>
+    <div class="prof" data-a="flip" style="--d:.7s"><div class="ph"><img src="img/felipe.webp" alt="Foto de Felipe Petruzzi Zalta"></div><p class="nm">Felipe Petruzzi Zalta</p><p class="tt">Especialista</p><p class="cv">Engenheiro de Segurança do Trabalho (PUCRS). Mais de 20 anos em saúde e segurança ocupacional.</p><p class="en"><b>Ensina:</b> saúde e segurança do trabalho no transporte.</p></div>
+    <div class="prof" data-a="flip" style="--d:.8s"><div class="ph"><img src="img/carlos.webp" alt="Foto de Carlos Eduardo Pereira"></div><p class="nm">Carlos Eduardo Pereira</p><p class="tt">Mestre e doutorando</p><p class="cv">Mestre em Inteligência de Negócios, doutorando em IA. Mais de 16 anos em grandes empresas.</p><p class="en"><b>Ensina:</b> IA e automação para ganhar tempo no RH.</p></div>
+  </div>
+  <div class="extras">
+    <div data-a style="--d:1s"><svg viewBox="0 0 24 24" fill="none" stroke="#6D28D9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z"/></svg><p><b>Aulas ao vivo todo mês.</b> Além de todo o conteúdo gravado, aulas ao vivo com os professores das disciplinas e com convidados especiais do setor. Também ficam gravadas.</p></div>
+    <div data-a style="--d:1.1s"><svg viewBox="0 0 24 24" fill="none" stroke="#6D28D9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg><p><b>Certificado reconhecido.</b> FABRANI, instituição autorizada pelo MEC. Título de especialista com validade nacional.</p></div>
+  </div>
+</section>
+
+<!-- 13. PERGUNTAS FREQUENTES -->
+<section class="slide" aria-label="Perguntas frequentes">
+  <p class="eyebrow" data-a style="--d:.1s">Perguntas frequentes da transportadora</p>
+  <h2 class="h2 split" data-start=".2">Antes de decidir, <span class="hl">a diretoria quer saber:</span></h2>
+  <div class="faq">
+    <div data-a style="--d:.5s"><h3>Quanto tempo leva?</h3><p>12 meses, com início em março de 2027. A cada módulo, o conteúdo já é aplicado na rotina da transportadora.</p></div>
+    <div data-a style="--d:.58s"><h3>Vai tirar o colaborador da operação?</h3><p>Não. Todo o conteúdo dos módulos é gravado, e ele estuda no horário que preferir. Além disso, tem 1 aula ao vivo por mês, que também fica gravada.</p></div>
+    <div data-a style="--d:.66s"><h3>E se eu pagar e ele sair?</h3><p>O estudo de caso deixa uma solução aplicada dentro da sua empresa. E reter pessoas é justamente um dos temas do Módulo 03.</p></div>
+    <div data-a style="--d:.74s"><h3>Por que não um MBA comum de RH?</h3><p>Porque um MBA genérico não ensina jornada do motorista, escala no transporte nem a relação sindical do setor.</p></div>
+    <div data-a style="--d:.82s"><h3>É reconhecido pelo MEC?</h3><p>Sim. É ministrado pela FABRANI, instituição autorizada pelo MEC, e o título de especialista tem validade nacional.</p></div>
+    <div data-a style="--d:.9s"><h3>Quem pode fazer?</h3><p>Quem tem graduação concluída ou está no último período da graduação.</p></div>
+    <div data-a style="--d:.98s"><h3>Quem paga?</h3><p>Pode ser a empresa, o colaborador ou os dois, dividindo o valor.</p></div>
+    <div data-a style="--d:1.06s"><h3>Quem escolhe o estudo de caso?</h3><p>Você. O seu RH estuda um problema real da sua transportadora e aplica a solução durante o MBA.</p></div>
+  </div>
+</section>
+
+<!-- 14. VALE A PENA -->
+<section class="slide" aria-label="Vale a pena">
+  <p class="eyebrow" data-a style="--d:.1s">O investimento vale a pena?</p>
+  <h2 class="h2 split" data-start=".2">Responda para você mesmo:</h2>
+  <div class="asks">
+    <div data-a style="--d:.5s"><b>1</b><p>Quanto custou cada motorista que saiu da sua empresa este ano?</p></div>
+    <div data-a style="--d:.62s"><b>2</b><p>Quanto custou a última contratação errada, de alguém que não ficou nem três meses?</p></div>
+    <div data-a style="--d:.74s"><b>3</b><p>Quanto foi pago em horas extras calculadas ou lançadas de forma errada, que poderiam ter sido evitadas?</p></div>
+    <div data-a style="--d:.86s"><b>4</b><p>Quanto a empresa já pagou em acordos e processos trabalhistas?</p></div>
+    <div data-a style="--d:.98s"><b>5</b><p>Quanto custa uma decisão errada do RH ou uma orientação errada da contabilidade quando a regra muda?</p></div>
+  </div>
+  <p class="after" data-a style="--d:1.2s">Somadas, as respostas mostram quanto a sua transportadora pode economizar. Agora compare com <b>a condição da próxima tela.</b></p>
+</section>
+
+<!-- 15. INVESTIMENTO -->
+<section class="slide" aria-label="Investimento">
+  <p class="eyebrow" data-a style="--d:.1s">Condição especial de pré-venda</p>
+  <div class="inv">
+    <div class="price" data-a="zoom" style="--d:.2s">
+      <p class="lbl">Valor do MBA</p>
+      <p class="old">R$ 12.000</p>
+      <p class="badge"><b>31%</b> de bolsa para as 20 primeiras empresas que fecharem</p>
+      <p class="final"><small>12x de</small> R$ <span data-count="690">690</span></p>
+      <p class="cash">ou R$ 7.590 à vista</p>
+      <div class="burst" id="burst" aria-hidden="true"></div>
+    </div>
+    <div class="right">
+      <h3 data-a style="--d:.6s"><span class="live"></span>São só 20 bolsas</h3>
+      <p data-a style="--d:.7s">As bolsas são liberadas por ordem de fechamento: ficam com as 20 primeiras empresas que fecharem. E já temos mais empresas interessadas do que bolsas.</p>
+      <div class="incl" data-a style="--d:.85s">
+        <div>6 módulos e 14 disciplinas do RH do transporte</div>
+        <div>Corpo docente especialista e convidados do setor</div>
+        <div>Todo o conteúdo gravado + 1 aula ao vivo por mês</div>
+        <div>Estudo de caso aplicado na sua empresa</div>
+        <div>Certificado com validade nacional (MEC)</div>
+      </div>
+      <a class="cta" data-a style="--d:1s" href="https://wa.me/5549999257301" target="_blank" rel="noopener">Reservar a bolsa no WhatsApp</a>
+      <span class="tel" data-a style="--d:1.05s">WhatsApp UNITRAN: (49) 9 9925-7301 · mba.unitran.org</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="ui">
+  <span class="count" id="count">01 / 15</span>
+  <div class="btns">
+    <button class="btn" id="prev" aria-label="Slide anterior">&#8592;</button>
+    <button class="btn" id="next" aria-label="Próximo slide">&#8594;</button>
+    <button class="btn" id="fs" aria-label="Tela cheia">&#x26F6;</button>
+  </div>
+</div>
+<p class="hint" id="hint">Use as setas ← → ou clique na tela para avançar · F para tela cheia</p>
+
+<script>
+(function () {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const stage = document.getElementById('stage');
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let cur = -1;
+  function fit() { stage.style.setProperty('--s', Math.min(innerWidth / 1920, innerHeight / 1080)); }
+  addEventListener('resize', fit); fit();
+
+  document.querySelectorAll('.split').forEach(el => {
+    let d = parseFloat(el.dataset.start || 0);
+    const walk = (node, hl) => {
+      Array.from(node.childNodes).forEach(n => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            const w = document.createElement('span'); w.className = 'w';
+            const i = document.createElement('span'); i.textContent = part; i.style.setProperty('--d', d.toFixed(2) + 's');
+            if (hl) i.className = 'hl';
+            w.appendChild(i); frag.appendChild(w); d += 0.06;
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1) { const isHl = n.classList.contains('hl'); walk(n, hl || isHl); if (isHl) n.classList.remove('hl'); }
+      });
+    };
+    walk(el, false);
+  });
+
+  const fmt = n => n.toLocaleString('pt-BR');
+  function countUp(el) {
+    const to = +el.dataset.count; if (reduce) { el.textContent = fmt(to); return; }
+    const t0 = performance.now(), dur = 1400, delay = 500;
+    el.textContent = fmt(0);
+    const tick = t => { const p = Math.min(1, Math.max(0, (t - t0 - delay) / dur)); el.textContent = fmt(Math.round(to * (1 - Math.pow(1 - p, 3)))); if (p < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  }
+
+  const burst = document.getElementById('burst');
+  for (let i = 0; i < 34; i++) { const s = document.createElement('i'); const a = Math.random() * 6.283, r = 160 + Math.random() * 260; s.style.setProperty('--x', Math.cos(a) * r + 'px'); s.style.setProperty('--y', Math.sin(a) * r * .7 - 60 + 'px'); s.style.setProperty('--c', ['#C4B5FD', '#7DD3FC', '#F0ABFC', '#FBF9FF'][i % 4]); s.style.animationDelay = (1.25 + Math.random() * .15) + 's'; burst.appendChild(s); }
+
+  const count = document.getElementById('count'), prog = document.getElementById('progress');
+  function show(n) {
+    n = Math.max(0, Math.min(slides.length - 1, n));
+    if (n === cur) return;
+    if (cur >= 0) slides[cur].classList.remove('active');
+    const s = slides[n]; burst.classList.remove('go'); void s.offsetWidth; s.classList.add('active'); cur = n;
+    s.querySelectorAll('[data-count]').forEach(countUp);
+    if (s.contains(burst) && !reduce) { void burst.offsetWidth; burst.classList.add('go'); }
+    count.textContent = String(n + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+    prog.style.width = ((n + 1) / slides.length * 100) + '%';
+    try { history.replaceState(null, '', '#slide-' + (n + 1)); } catch (e) {}
+  }
+  window.__show = show;
+  const next = () => show(cur + 1), prev = () => show(cur - 1);
+  const toggleFs = () => { try { if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {}); else document.exitFullscreen(); } catch (e) {} };
+  document.getElementById('next').addEventListener('click', e => { e.stopPropagation(); next(); });
+  document.getElementById('prev').addEventListener('click', e => { e.stopPropagation(); prev(); });
+  document.getElementById('fs').addEventListener('click', e => { e.stopPropagation(); toggleFs(); });
+  addEventListener('keydown', e => {
+    if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); next(); }
+    else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') show(0); else if (e.key === 'End') show(slides.length - 1);
+    else if (e.key === 'f' || e.key === 'F') toggleFs();
+  });
+  let tx = null;
+  addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  addEventListener('touchend', e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) (dx < 0 ? next : prev)(); tx = null; });
+  stage.addEventListener('click', e => { if (e.target.closest('a')) return; if (e.clientX > innerWidth * .5) next(); else prev(); });
+  setTimeout(() => document.getElementById('hint').classList.add('off'), 6000);
+
+  let mx = 0, my = 0;
+  addEventListener('mousemove', e => {
+    mx = e.clientX / innerWidth * 2 - 1; my = e.clientY / innerHeight * 2 - 1;
+    if (reduce) return;
+    document.querySelectorAll('.slide.active .par').forEach(el => { const d = +(el.dataset.depth || 12); el.style.translate = (-mx * d) + 'px ' + (-my * d) + 'px'; });
+  });
+
+  const net = document.getElementById('net'), nc = net.getContext('2d');
+  let W = 0, H = 0; const dpr = Math.min(2, devicePixelRatio || 1); const P = [];
+  function sizeNet() { W = innerWidth; H = innerHeight; net.width = W * dpr; net.height = H * dpr; nc.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  addEventListener('resize', sizeNet); sizeNet();
+  for (let i = 0; i < 70; i++) P.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35 });
+
+  const oc = document.querySelector('[data-orb]'), ox = oc.getContext('2d'); const pts = [], links = []; const n = 260, g = Math.PI * (3 - Math.sqrt(5));
+  for (let i = 0; i < n; i++) { const y = 1 - (i / (n - 1)) * 2, r = Math.sqrt(1 - y * y), t = g * i; pts.push([Math.cos(t) * r, y, Math.sin(t) * r]); }
+  for (let i = 0; i < n; i++) { const ds = []; for (let j = 0; j < n; j++) if (j !== i) { const a = pts[i], b = pts[j]; ds.push([(a[0]-b[0])**2 + (a[1]-b[1])**2 + (a[2]-b[2])**2, j]); } ds.sort((a, b) => a[0] - b[0]); for (let k = 0; k < 3; k++) if (ds[k][1] > i) links.push([i, ds[k][1]]); }
+  let ang = 0, last = performance.now();
+  function drawOrb(dt) {
+    const w = oc.clientWidth, h = oc.clientHeight; if (!w) return;
+    if (oc.width !== Math.round(w * dpr)) { oc.width = Math.round(w * dpr); oc.height = Math.round(h * dpr); }
+    ox.setTransform(dpr, 0, 0, dpr, 0, 0); ox.clearRect(0, 0, w, h);
+    ang += reduce ? 0 : dt * .00018;
+    const ay = ang + mx * .5, ax = .35 + my * .25, cy = Math.cos(ay), sy = Math.sin(ay), cx = Math.cos(ax), sx = Math.sin(ax), R = Math.min(w, h) * .44, c0x = w / 2, c0y = h / 2;
+    const pr = pts.map(p => { let X = p[0] * cy - p[2] * sy, Z = p[0] * sy + p[2] * cy, Y = p[1] * cx - Z * sx; Z = p[1] * sx + Z * cx; const f = 2.6 / (2.6 + Z); return [c0x + X * R * f, c0y + Y * R * f, Z]; });
+    ox.lineWidth = 1;
+    links.forEach(([i, j]) => { const a = pr[i], b = pr[j], z = (a[2] + b[2]) / 2; ox.strokeStyle = `rgba(109,40,217,${(1 - z) * .27 + .04})`; ox.beginPath(); ox.moveTo(a[0], a[1]); ox.lineTo(b[0], b[1]); ox.stroke(); });
+    pr.forEach((p, i) => { const k = (1 - p[2]) / 2; ox.fillStyle = i % 7 === 0 ? `rgba(25,169,216,${.35 + k * .6})` : `rgba(109,40,217,${.25 + k * .7})`; ox.beginPath(); ox.arc(p[0], p[1], 1.4 + k * 3.2, 0, 6.283); ox.fill(); });
+  }
+  function frame(t) {
+    const dt = Math.min(64, t - last); last = t;
+    nc.clearRect(0, 0, W, H);
+    for (const p of P) { if (!reduce) { p.x += p.vx * dt * .06; p.y += p.vy * dt * .06; } if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; }
+    const mxp = (mx + 1) / 2 * W, myp = (my + 1) / 2 * H;
+    for (let i = 0; i < P.length; i++) {
+      const a = P[i];
+      for (let j = i + 1; j < P.length; j++) { const b = P[j], d = Math.hypot(a.x - b.x, a.y - b.y); if (d < 170) { nc.strokeStyle = `rgba(109,40,217,${(1 - d / 170) * .14})`; nc.beginPath(); nc.moveTo(a.x, a.y); nc.lineTo(b.x, b.y); nc.stroke(); } }
+      const dm = Math.hypot(a.x - mxp, a.y - myp); if (dm < 220) { nc.strokeStyle = `rgba(25,169,216,${(1 - dm / 220) * .3})`; nc.beginPath(); nc.moveTo(a.x, a.y); nc.lineTo(mxp, myp); nc.stroke(); }
+      nc.fillStyle = 'rgba(109,40,217,.28)'; nc.beginPath(); nc.arc(a.x, a.y, 2.2, 0, 6.283); nc.fill();
+    }
+    if (slides[0].classList.contains('active')) drawOrb(dt);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+
+  const m = /^#slide-(\d+)$/.exec(location.hash); show(m ? (+m[1] - 1) : 0);
+  addEventListener('hashchange', () => { const k = /^#slide-(\d+)$/.exec(location.hash); if (k && +k[1] - 1 !== cur) show(+k[1] - 1); });
+})();
+</script>
+</body>
+</html>
