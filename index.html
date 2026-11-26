@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>MBA em DP e RH do Transporte | Apresentação para a transportadora</title>
+<title>MBA em DP e RH do Transporte | UNITRAN × FABRANI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap">
@@ -88,7 +88,7 @@ p { margin: 0; }
 /* 3. visão geral dos módulos */
 .tbl-head { display: grid; grid-template-columns: 90px 520px 1fr 560px; gap: 32px; font-size: 20px; letter-spacing: .14em; text-transform: uppercase; color: #8A82A6; font-weight: 700; padding-bottom: 12px; }
 .tbl { border-top: 1px solid var(--line); }
-.tr { display: grid; grid-template-columns: 90px 520px 1fr 560px; gap: 32px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.tr { display: grid; grid-template-columns: 90px 520px 1fr 560px; gap: 32px; align-items: center; padding: 13px 0; border-bottom: 1px solid var(--line); }
 .tr .num { font-family: var(--display); font-weight: 800; font-size: 48px; line-height: 1; background: linear-gradient(135deg, #C4B5FD, #6D28D9); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .tr .t { font-family: var(--display); font-weight: 700; font-size: 28px; line-height: 1.2; }
 .tr .t small { display: block; font-family: var(--body); color: var(--violet); font-size: 20px; font-weight: 700; margin-top: 2px; }
@@ -252,11 +252,14 @@ body.mob .band { font-size: 42px; padding: 36px 40px; margin-top: 44px; }
 /* visão geral */
 body.mob .tbl-head { display: none; }
 body.mob .tr { grid-template-columns: 96px 1fr; gap: 12px 26px; padding: 28px 0; align-items: start; }
-body.mob .tr .num { font-size: 60px; grid-row: span 2; }
+body.mob .tr .num { font-size: 60px; grid-row: span 3; }
 body.mob .tr .t { font-size: 42px; }
 body.mob .tr .t small { font-size: 28px; }
-body.mob .tr .l { display: none; }
-body.mob .tr .res { grid-column: 2; font-size: 38px; }
+body.mob .tr .l { display: block; grid-column: 2; font-size: 34px; line-height: 1.35; }
+body.mob .tr .l::before, body.mob .tr .res::before { display: block; margin-bottom: 4px; font-family: var(--body); font-size: 22px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #8A82A6; }
+body.mob .tr .l::before { content: "O que aprende"; }
+body.mob .tr .res::before { content: "O problema que resolve"; }
+body.mob .tr .res { grid-column: 2; font-size: 36px; }
 /* módulos */
 body.mob .mod-grid { grid-template-columns: 1fr; gap: 44px; }
 body.mob .disc { margin-bottom: 40px; }
@@ -331,6 +334,24 @@ body.mob .ui { padding: 34px 16px 14px; background: linear-gradient(to top, rgba
 body.mob.dark .ui { background: linear-gradient(to top, rgba(62,20,140,.97) 55%, rgba(62,20,140,0)); }
 body.mob .hint { bottom: 84px; font-size: 13px; }
 
+/* aluno: visão geral clicável, voltar, diretoria */
+.tr.go { cursor: pointer; border-radius: 14px; transition: background .25s; }
+.tr.go:hover { background: rgba(237,233,254,.7); }
+.tip { margin-top: 12px; font-size: 22px; color: #8A82A6; }
+.back { position: absolute; left: 140px; bottom: 64px; font-size: 22px; font-weight: 700; color: var(--violet); text-decoration: none; padding: 10px 20px; border-radius: 999px; background: rgba(255,255,255,.7); border: 1px solid var(--line); }
+.dir { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; margin-top: 10px; }
+.dstep { position: relative; padding: 40px 38px 38px; border-radius: 32px; background: rgba(255,255,255,.78); border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(76,29,149,.10); }
+.dstep b { display: inline-grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #8B5CF6, #5B21B6); color: #fff; font-family: var(--display); font-size: 32px; }
+.dstep h3 { font-family: var(--display); font-size: 36px; line-height: 1.2; margin: 24px 0 12px; }
+.dstep p { font-size: 26px; line-height: 1.45; color: var(--ink-soft); }
+.dlink { display: inline-block; margin-top: 20px; font-size: 24px; font-weight: 700; color: var(--violet); text-decoration: none; border-bottom: 2px solid rgba(109,40,217,.35); padding-bottom: 2px; }
+body.mob .tip { font-size: 28px; }
+body.mob .back { position: static; display: inline-block; margin-top: 44px; font-size: 32px; padding: 16px 28px; }
+body.mob .dir { grid-template-columns: 1fr; gap: 28px; }
+body.mob .dstep h3 { font-size: 44px; }
+body.mob .dstep p { font-size: 38px; }
+body.mob .dlink { font-size: 34px; }
+
 /* comandos */
 .ui { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; padding: 14px 22px; pointer-events: none; }
 .ui > * { pointer-events: auto; }
@@ -367,37 +388,37 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
   <div class="cover-left">
     <div class="logos" data-a style="--d:.1s"><img src="img/logo-unitran.png" alt="UNITRAN, Universidade do Transporte e Logística"><span>×</span><img class="lf" src="img/logo-fabrani.png" alt="FABRANI"></div>
     <h1 class="display split" data-start=".3">MBA em Departamento Pessoal e <span class="hl">RH do Transporte</span></h1>
-    <p class="ask" data-a style="--d:1.2s">A partir de dezembro, as regras de jornada e de folha mudam, e seguem mudando em 2027. <b>O RH da sua transportadora está preparado?</b></p>
-    <p class="pill" data-a style="--d:1.5s"><span class="live"></span>Início em março de 2027 · 12 meses · 100% EAD</p>
+    <p class="ask" data-a style="--d:1.2s">Domine as regras de jornada, folha e contratação do transporte e <b>torne-se referência em RH no transporte.</b></p>
   </div>
 </section>
 
 <!-- 2. POR QUE AGORA -->
 <section class="slide" aria-label="Por que agora">
   <p class="eyebrow" data-a style="--d:.1s">Por que agora</p>
-  <h2 class="h2 split" data-start=".2">Depois do diesel, o pessoal está <span class="hl">entre os maiores custos</span> da sua transportadora.</h2>
+  <h2 class="h2 split" data-start=".2">Depois do diesel, as despesas com pessoal estão <span class="hl">entre os maiores custos</span> da transportadora.</h2>
   <div class="rows">
     <div class="rowx" data-a style="--d:.8s"><span class="n">Dez/2026</span><p>A jornada semanal cai de 44 para 42 horas, sem redução de salário.</p></div>
     <div class="rowx" data-a style="--d:.95s"><span class="n">Dez/2027</span><p>Nova redução, para 40 horas semanais.</p></div>
     <div class="rowx" data-a style="--d:1.1s"><span class="n">O efeito</span><p>Menos horas com o mesmo salário: cada hora de trabalho fica mais cara, e a jornada dos motoristas precisa ser ajustada.</p></div>
   </div>
-  <p class="band" data-a style="--d:1.3s">Com o custo maior, cada erro de jornada, de folha ou de contratação pesa mais no caixa. Por isso o seu time de RH e DP precisa estar preparado.</p>
+  <p class="band" data-a style="--d:1.3s">Com o custo maior, cada erro de jornada, de folha ou de contratação pesa mais no caixa. E quem é cobrado por isso é o RH e o DP.</p>
   <p class="src">Fontes: Emenda Constitucional nº 141/2026 (regras de transição em julgamento no STF); estrutura de custos do transporte rodoviário de cargas, NTC&amp;Logística.</p>
 </section>
 
 <!-- 3. VISÃO GERAL -->
 <section class="slide" aria-label="Os 6 módulos">
-  <p class="eyebrow" data-a style="--d:.1s">O que o seu RH vai aprender</p>
+  <p class="eyebrow" data-a style="--d:.1s">O que você vai aprender</p>
   <h2 class="h2 split" data-start=".2">6 módulos. Cada um resolve <span class="hl">um problema real do transporte.</span></h2>
   <div class="tbl-head" data-a style="--d:.5s"><span></span><span>Módulo</span><span>O que aprende</span><span>O problema que resolve</span></div>
   <div class="tbl">
-    <div class="tr" data-a style="--d:.55s"><span class="num">01</span><p class="t">A Gestão de Pessoas e o Direito<small>40 horas</small></p><p class="l">As regras trabalhistas aplicadas ao transporte de cargas.</p><p class="res">Decisões de DP e RH tomadas sem conhecer as regras do transporte</p></div>
-    <div class="tr" data-a style="--d:.65s"><span class="num">02</span><p class="t">Formação do Contrato<small>90 horas</small></p><p class="l">Recrutamento, perfil comportamental, admissão e eSocial.</p><p class="res">Altos custos com rotatividade e contratação errada</p></div>
-    <div class="tr" data-a style="--d:.75s"><span class="num">03</span><p class="t">Gestão e Desenvolvimento<small>45 horas</small></p><p class="l">Gestão estratégica de pessoas e treinamento.</p><p class="res">Perda de bons profissionais e dificuldade para reter motoristas</p></div>
-    <div class="tr" data-a style="--d:.85s"><span class="num">04</span><p class="t">Trabalho e Remuneração<small>80 horas</small></p><p class="l">Jornada do motorista, salário e folha de pagamento.</p><p class="res">Horas extras pagas errado e folha fora da nova escala</p></div>
-    <div class="tr" data-a style="--d:.95s"><span class="num">05</span><p class="t">Rescisão, Conformidade e Prevenção<small>55 horas</small></p><p class="l">Rescisão, defesa preventiva e compliance trabalhista.</p><p class="res">Passivo trabalhista: processos e acordos que poderiam ser evitados</p></div>
-    <div class="tr" data-a style="--d:1.05s"><span class="num">06</span><p class="t">Segurança, Saúde e Tecnologia<small>50 horas</small></p><p class="l">Saúde e segurança no transporte, IA e automação no RH.</p><p class="res">Afastamentos, riscos de segurança e retrabalho no DP</p></div>
+    <div class="tr go" data-go="4" data-a style="--d:.55s"><span class="num">01</span><p class="t">A Gestão de Pessoas e o Direito<small>40 horas</small></p><p class="l">As regras trabalhistas aplicadas ao transporte de cargas.</p><p class="res">Decisões de DP e RH tomadas sem conhecer as regras do transporte</p></div>
+    <div class="tr go" data-go="5" data-a style="--d:.65s"><span class="num">02</span><p class="t">Formação do Contrato<small>90 horas</small></p><p class="l">Recrutamento, perfil comportamental, admissão e eSocial.</p><p class="res">Altos custos com rotatividade e contratação errada</p></div>
+    <div class="tr go" data-go="6" data-a style="--d:.75s"><span class="num">03</span><p class="t">Gestão e Desenvolvimento<small>45 horas</small></p><p class="l">Gestão estratégica de pessoas e treinamento.</p><p class="res">Perda de bons profissionais e dificuldade para reter motoristas</p></div>
+    <div class="tr go" data-go="7" data-a style="--d:.85s"><span class="num">04</span><p class="t">Trabalho e Remuneração<small>80 horas</small></p><p class="l">Jornada do motorista, salário e folha de pagamento.</p><p class="res">Horas extras pagas errado e folha fora da nova escala</p></div>
+    <div class="tr go" data-go="8" data-a style="--d:.95s"><span class="num">05</span><p class="t">Rescisão, Conformidade e Prevenção<small>55 horas</small></p><p class="l">Rescisão, defesa preventiva e compliance trabalhista.</p><p class="res">Passivo trabalhista: processos e acordos que poderiam ser evitados</p></div>
+    <div class="tr go" data-go="9" data-a style="--d:1.05s"><span class="num">06</span><p class="t">Segurança, Saúde e Tecnologia<small>50 horas</small></p><p class="l">Saúde e segurança no transporte, IA e automação no RH.</p><p class="res">Afastamentos mal conduzidos e um DP preso a tarefas manuais que a IA pode agilizar</p></div>
   </div>
+  <p class="tip" data-a style="--d:1.2s">Toque ou clique em um módulo para ver o detalhe.</p>
 </section>
 
 <!-- 4. MÓDULO 01 -->
@@ -408,7 +429,7 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
   <div class="mod-grid">
     <div>
       <div class="disc" data-a style="--d:.5s"><div><span>Ambientação e Metodologia do MBA</span><b>10 h</b></div><div><span>Introdução ao Direito do Trabalho Aplicado ao Transporte</span><b>30 h</b></div></div>
-      <p class="k" data-a style="--d:.6s">O que o seu RH aprende</p>
+      <p class="k" data-a style="--d:.6s">O que você aprende</p>
       <ul class="learn">
         <li data-a style="--d:.7s">As regras trabalhistas que valem para o transporte de cargas, explicadas para quem decide no dia a dia do RH.</li>
         <li data-a style="--d:.8s">Como ler uma regra nova e entender o que ela muda na prática dentro da transportadora.</li>
@@ -416,9 +437,10 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
     </div>
     <div>
       <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Decisões de DP e RH tomadas sem conhecer as regras do transporte, que viram multa, processo e retrabalho.</p></div>
-      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quanto já custou para a sua empresa uma decisão do DP ou do RH tomada no achismo?</p><p class="q2">Quem na sua empresa acompanha as mudanças nas regras trabalhistas e está treinado para aplicar essas regras na prática?</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quanto já custou para a empresa uma decisão do DP ou do RH tomada no achismo?</p><p class="q2">Quem na empresa acompanha as mudanças nas regras trabalhistas e está preparado para aplicá-las na prática?</p></div>
     </div>
   </div>
+  <a class="back" href="#slide-3" data-go="3">← Ver os 6 módulos</a>
 </section>
 
 <!-- 5. MÓDULO 02 -->
@@ -429,7 +451,7 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
   <div class="mod-grid">
     <div>
       <div class="disc" data-a style="--d:.5s"><div><span>Recrutamento, Seleção e Perfil Comportamental</span><b>35 h</b></div><div><span>Admissão e Contrato de Trabalho</span><b>30 h</b></div><div><span>eSocial e Rotinas de Departamento Pessoal</span><b>25 h</b></div></div>
-      <p class="k" data-a style="--d:.6s">O que o seu RH aprende</p>
+      <p class="k" data-a style="--d:.6s">O que você aprende</p>
       <ul class="learn">
         <li data-a style="--d:.7s">Recrutar e selecionar motoristas pelo perfil certo, com análise comportamental.</li>
         <li data-a style="--d:.8s">Admitir com o contrato correto e manter o eSocial e as rotinas do DP em dia.</li>
@@ -437,9 +459,10 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
     </div>
     <div>
       <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Altos custos com rotatividade e com contratação errada.</p><p class="f">Cada motorista que sai gera rescisão, recrutamento, exames, toxicológico, integração e caminhão parado até a reposição. Uma estimativa conservadora do setor fica entre R$ 1.000 e R$ 2.000 por saída.</p></div>
-      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quantos motoristas saíram da sua empresa nos últimos 12 meses? Multiplique por esse valor.</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quantos motoristas a empresa contratou no último ano que não ficaram nem três meses?</p><p class="q2">Quanto tempo a empresa leva para repor uma vaga de motorista?</p></div>
     </div>
   </div>
+  <a class="back" href="#slide-3" data-go="3">← Ver os 6 módulos</a>
 </section>
 
 <!-- 6. MÓDULO 03 -->
@@ -450,7 +473,7 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
   <div class="mod-grid">
     <div>
       <div class="disc" data-a style="--d:.5s"><div><span>Gestão de Gente e Gestão Estratégica de RH</span><b>25 h</b></div><div><span>Treinamento e Desenvolvimento</span><b>20 h</b></div></div>
-      <p class="k" data-a style="--d:.6s">O que o seu RH aprende</p>
+      <p class="k" data-a style="--d:.6s">O que você aprende</p>
       <ul class="learn">
         <li data-a style="--d:.7s">Criar ações de retenção, carreira e reconhecimento para motoristas e equipe.</li>
         <li data-a style="--d:.8s">Treinar e desenvolver as pessoas e as lideranças da transportadora.</li>
@@ -458,9 +481,10 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
     </div>
     <div>
       <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Perda de bons profissionais e dificuldade para reter motoristas.</p><p class="f">88% das empresas do transporte de cargas relatam dificuldade para contratar motoristas. Quem já está na empresa vale mais do que nunca.<small>Fonte: NTC&amp;Logística, pesquisa de 2025.</small></p></div>
-      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quantos bons profissionais você perdeu este ano para a concorrência por uma diferença pequena de salário?</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quantos bons profissionais a empresa perdeu este ano para a concorrência por uma diferença pequena de salário?</p><p class="q2">Além do salário, que ações a empresa tem hoje para reter um bom motorista?</p></div>
     </div>
   </div>
+  <a class="back" href="#slide-3" data-go="3">← Ver os 6 módulos</a>
 </section>
 
 <!-- 7. MÓDULO 04 -->
@@ -471,7 +495,7 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
   <div class="mod-grid">
     <div>
       <div class="disc" data-a style="--d:.5s"><div><span>Jornada de Trabalho no Transporte Rodoviário de Cargas</span><b>40 h</b></div><div><span>Salário e Remuneração</span><b>20 h</b></div><div><span>Folha de Pagamento</span><b>20 h</b></div></div>
-      <p class="k" data-a style="--d:.6s">O que o seu RH aprende</p>
+      <p class="k" data-a style="--d:.6s">O que você aprende</p>
       <ul class="learn">
         <li data-a style="--d:.7s">Calcular e controlar a jornada do motorista: tempo de direção, descanso, espera e hora extra.</li>
         <li data-a style="--d:.8s">Montar salário e folha de pagamento pensados para o transporte e adaptados à nova escala.</li>
@@ -479,9 +503,10 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
     </div>
     <div>
       <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Horas extras pagas errado e uma folha que não acompanha a nova escala.</p><p class="f">Hora extra é o assunto número 1 das ações trabalhistas no Brasil.<small>Fonte: Tribunal Superior do Trabalho (TST), 2025.</small></p></div>
-      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quanto a sua empresa paga por mês em horas extras calculadas ou lançadas de forma errada? É um gasto que poderia ser evitado.</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quanto a empresa paga por mês em horas extras calculadas ou lançadas de forma errada? É um gasto que poderia ser evitado.</p></div>
     </div>
   </div>
+  <a class="back" href="#slide-3" data-go="3">← Ver os 6 módulos</a>
 </section>
 
 <!-- 8. MÓDULO 05 -->
@@ -492,7 +517,7 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
   <div class="mod-grid">
     <div>
       <div class="disc" data-a style="--d:.5s"><div><span>Rescisão, Quitação e Contencioso Preventivo</span><b>40 h</b></div><div><span>Compliance Trabalhista</span><b>15 h</b></div></div>
-      <p class="k" data-a style="--d:.6s">O que o seu RH aprende</p>
+      <p class="k" data-a style="--d:.6s">O que você aprende</p>
       <ul class="learn">
         <li data-a style="--d:.7s">Fazer rescisões e acertos finais sem deixar brechas.</li>
         <li data-a style="--d:.8s">Organizar ponto, documentos e acordos para que a empresa tenha como se defender.</li>
@@ -501,9 +526,10 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
     </div>
     <div>
       <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Passivo trabalhista: processos, acordos e condenações que poderiam ter sido evitados e que chegam depois que o funcionário já saiu.</p><p class="f">Em 2025 foram 2,47 milhões de novas ações trabalhistas no Brasil.<small>Fonte: Tribunal Superior do Trabalho (TST).</small></p></div>
-      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quanto a sua empresa já pagou em acordos e processos trabalhistas?</p><p class="q2">E quanto poderia economizar se os desligamentos e acertos fossem feitos do jeito certo?</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quanto a empresa já pagou em acordos e processos trabalhistas?</p><p class="q2">E quanto poderia economizar se os desligamentos e acertos fossem feitos do jeito certo?</p></div>
     </div>
   </div>
+  <a class="back" href="#slide-3" data-go="3">← Ver os 6 módulos</a>
 </section>
 
 <!-- 9. MÓDULO 06 -->
@@ -514,7 +540,7 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
   <div class="mod-grid">
     <div>
       <div class="disc" data-a style="--d:.5s"><div><span>Saúde, Segurança e Medicina do Trabalho no Transporte</span><b>20 h</b></div><div><span>Inteligência Artificial, Automação e Ferramentas de Produtividade no RH</span><b>30 h</b></div></div>
-      <p class="k" data-a style="--d:.6s">O que o seu RH aprende</p>
+      <p class="k" data-a style="--d:.6s">O que você aprende</p>
       <ul class="learn">
         <li data-a style="--d:.7s">Conduzir do jeito certo afastamentos, acidentes de trabalho e exames ocupacionais, e cumprir as normas de saúde e segurança no transporte.</li>
         <li data-a style="--d:.8s">Usar inteligência artificial e automação para tirar o trabalho repetitivo do DP.</li>
@@ -522,25 +548,26 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
     </div>
     <div>
       <div class="pain" data-a="right" style="--d:.6s"><p class="k">O problema que resolve</p><p class="p">Afastamentos e acidentes conduzidos de forma errada, que viram multa e passivo trabalhista, e um DP que perde horas com tarefas manuais que poderiam ser automatizadas com inteligência artificial.</p></div>
-      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quanto custa para a sua empresa um afastamento ou acidente de trabalho conduzido de forma errada, que depois vira multa ou processo?</p><p class="q2">Quantas horas por mês o seu RH gasta refazendo planilhas e corrigindo a folha? E quanto tempo economizaria se soubesse aplicar inteligência artificial do jeito certo?</p></div>
+      <div class="q" data-a="right" style="--d:.8s"><p class="k">Para refletir:</p><p>Quanto custa para a empresa um afastamento ou acidente de trabalho conduzido de forma errada, que depois vira multa ou processo?</p><p class="q2">Quanto tempo o RH ganharia aplicando inteligência artificial em processos do dia a dia?</p></div>
     </div>
   </div>
+  <a class="back" href="#slide-3" data-go="3">← Ver os 6 módulos</a>
 </section>
 
 <!-- 10. ESTUDO DE CASO -->
 <section class="slide s-caso" aria-label="Estudo de caso">
   <div class="caso-photo par" data-depth="16" data-a="right" style="--d:.3s"><img src="img/truck2.webp" alt="Caminhão em uma rodovia vista de cima"></div>
   <div class="caso-text">
-    <p class="eyebrow" data-a style="--d:.1s">Estudo de caso aplicado</p>
-    <h2 class="h2 split" data-start=".2" style="margin-bottom:10px">Em 12 meses, resultado <span class="hl">dentro da sua empresa.</span></h2>
+    <p class="eyebrow" data-a style="--d:.1s">Metodologia</p>
+    <h2 class="h2 split" data-start=".2" style="margin-bottom:10px">Em 12 meses, resultado <span class="hl">dentro da empresa.</span></h2>
     <div class="steps">
-      <div data-a style="--d:.8s"><b>1</b><span>Você escolhe um problema real da transportadora.</span></div>
-      <div data-a style="--d:.95s"><b>2</b><span>O seu RH estuda esse problema durante o MBA.</span></div>
-      <div data-a style="--d:1.1s"><b>3</b><span>A solução é aplicada na sua empresa, e a cada módulo o conteúdo já vai para a rotina.</span></div>
+      <div data-a style="--d:.8s"><b>1</b><span>As aulas são baseadas em estudos de caso de transportadoras.</span></div>
+      <div data-a style="--d:.95s"><b>2</b><span>Você analisa situações reais de DP e RH do transporte.</span></div>
+      <div data-a style="--d:1.1s"><b>3</b><span>O que você aprende já é aplicado dentro da transportadora, módulo a módulo.</span></div>
     </div>
     <div class="trio" data-a style="--d:1.3s">
       <div><b>12 meses</b><span>início em março de 2027</span></div>
-      <div><b>100% EAD</b><span>conteúdo gravado, para o aluno assistir, ler e fazer no tempo dele</span></div>
+      <div><b>100% EAD</b><span>conteúdo gravado, para você assistir, ler e fazer no seu tempo</span></div>
       <div><b>+ 1 aula ao vivo</b><span>por mês, de complemento, que também fica gravada</span></div>
     </div>
   </div>
@@ -550,14 +577,14 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
 <section class="slide" aria-label="Ariel Vanquisher">
   <div class="ariel-photo" data-a="zoom" style="--d:.2s"><img src="img/ariel.webp" alt="Foto de Ariel Vanquisher"></div>
   <div class="ariel-text">
-    <p class="eyebrow" data-a style="--d:.1s">Quem vai ensinar o seu RH</p>
+    <p class="eyebrow" data-a style="--d:.1s">Quem vai te ensinar</p>
     <p class="name split" data-start=".25">Ariel Vanquisher</p>
     <p class="role" data-a style="--d:.6s">Advogado especialista em direito do trabalho e regulatório do transporte de cargas: jornada, folha e passivo trabalhista. Também é transportador.</p>
     <p class="cv" data-a style="--d:.7s">Mestre em Direito (UFSC) e LLM em Direito de Empresa (FGV). Professor de diversos MBAs.</p>
     <div class="stats" data-a style="--d:.85s">
       <div><b><span data-count="800">800</span>+</b><span>transportadoras assessoradas</span></div>
       <div><b><span data-count="15">15</span> mil</b><span>alunos, aproximadamente</span></div>
-      <div><b><span data-count="28">28</span>+</b><span>anos de experiência</span></div>
+      <div><b><span data-count="30">30</span></b><span>anos de experiência</span></div>
     </div>
     <p class="teach" data-a style="--d:1s"><b>No MBA, Ariel ensina</b> como calcular e controlar a jornada do motorista, como montar a folha do transporte, como fazer rescisões seguras e como prevenir processos trabalhistas.</p>
   </div>
@@ -566,7 +593,7 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
 <!-- 12. CORPO DOCENTE -->
 <section class="slide" aria-label="Corpo docente">
   <p class="eyebrow" data-a style="--d:.1s">Corpo docente</p>
-  <h2 class="h2 split" data-start=".2">Um especialista <span class="hl">para cada área do RH.</span></h2>
+  <h2 class="h2 split" data-start=".2">Mestres, doutorandos e <span class="hl">especialistas de mercado.</span></h2>
   <div class="team">
     <div class="prof" data-a="flip" style="--d:.4s"><div class="ph"><img src="img/thamires.webp" alt="Foto de Thamires de Freitas"></div><p class="nm">Thamires de Freitas</p><p class="tt">Especialista</p><p class="cv">Economista (PUC-SP), especialista em Pessoas (Mackenzie), analista DISC. 20 anos em gestão de pessoas.</p></div>
     <div class="prof" data-a="flip" style="--d:.5s"><div class="ph"><img src="img/lucimar.webp" alt="Foto de Lucimar Angela Frigeri"></div><p class="nm">Lucimar Angela Frigeri</p><p class="tt">Mestre</p><p class="cv">Contadora, mestre em Administração (Unoesc). Controladoria e custos em empresas de transporte.</p></div>
@@ -582,17 +609,17 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
 
 <!-- 13. PERGUNTAS FREQUENTES -->
 <section class="slide" aria-label="Perguntas frequentes">
-  <p class="eyebrow" data-a style="--d:.1s">Perguntas frequentes da transportadora</p>
-  <h2 class="h2 split" data-start=".2">Antes de decidir, <span class="hl">a diretoria quer saber:</span></h2>
+  <p class="eyebrow" data-a style="--d:.1s">Perguntas frequentes</p>
+  <h2 class="h2 split" data-start=".2">As dúvidas <span class="hl">mais comuns:</span></h2>
   <div class="faq">
     <div data-a style="--d:.5s"><h3>Quanto tempo leva?</h3><p>12 meses, com início em março de 2027. A cada módulo, o conteúdo já é aplicado na rotina da transportadora.</p></div>
-    <div data-a style="--d:.58s"><h3>Vai tirar o colaborador da operação?</h3><p>Não. O conteúdo é 100% EAD e gravado, disponível para ele assistir, ler e fazer no tempo dele. Além disso, tem 1 aula ao vivo por mês, que também fica gravada.</p></div>
-    <div data-a style="--d:.66s"><h3>E se eu pagar e ele sair?</h3><p>O estudo de caso deixa uma solução aplicada dentro da sua empresa. E pense ao contrário: se ele ficar e não for treinado, quanto vai custar ter um RH despreparado para o dia a dia da transportadora?</p></div>
-    <div data-a style="--d:.74s"><h3>Por que não um MBA comum de RH?</h3><p>Porque um MBA genérico não ensina jornada do motorista, escala no transporte nem a relação sindical do setor.</p></div>
+    <div data-a style="--d:.58s"><h3>Vou conseguir conciliar com o trabalho?</h3><p>Sim. O conteúdo é 100% EAD e gravado, disponível para você assistir, ler e fazer no seu tempo. Além disso, tem 1 aula ao vivo por mês, que também fica gravada.</p></div>
+    <div data-a style="--d:.66s"><h3>Tem TCC?</h3><p>Não é obrigatório. A metodologia do MBA é baseada em estudos de caso de transportadoras.</p></div>
+    <div data-a style="--d:.74s"><h3>Qual é o diferencial do MBA?</h3><p>É o único MBA do Brasil 100% focado no RH do transporte rodoviário de cargas, que trata de jornada do motorista, escala, folha, relação sindical e passivo trabalhista do setor, além de inteligência artificial e tecnologia aplicadas ao RH.</p></div>
     <div data-a style="--d:.82s"><h3>É reconhecido pelo MEC?</h3><p>Sim. É ministrado pela FABRANI, instituição autorizada pelo MEC, e o título de especialista tem validade nacional.</p></div>
     <div data-a style="--d:.9s"><h3>Quem pode fazer?</h3><p>Quem tem graduação concluída ou está no último período da graduação.</p></div>
-    <div data-a style="--d:.98s"><h3>Quem paga?</h3><p>Pode ser a empresa, o colaborador ou os dois, dividindo o valor.</p></div>
-    <div data-a style="--d:1.06s"><h3>Quem escolhe o estudo de caso?</h3><p>Você. O seu RH estuda um problema real da sua transportadora e aplica a solução durante o MBA.</p></div>
+    <div data-a style="--d:.98s"><h3>Quem paga?</h3><p>Pode ser a empresa, você ou os dois, dividindo o valor.</p></div>
+    <div data-a style="--d:1.06s"><h3>E se a empresa não quiser pagar?</h3><p>Leve para a diretoria a apresentação feita para ela. Se ajudar, marcamos 15 minutos com o diretor junto com você. Também dá para dividir o valor.</p></div>
   </div>
 </section>
 
@@ -601,14 +628,14 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
   <p class="eyebrow" data-a style="--d:.1s">O investimento vale a pena?</p>
   <h2 class="h2 split" data-start=".2">Responda para você mesmo:</h2>
   <div class="asks">
-    <div data-a style="--d:.5s"><b>1</b><p>Quanto custou cada motorista que saiu da sua empresa este ano?</p></div>
+    <div data-a style="--d:.5s"><b>1</b><p>Quanto custou cada motorista que saiu da empresa este ano?</p></div>
     <div data-a style="--d:.62s"><b>2</b><p>Quanto custou a última contratação errada, de alguém que não ficou nem três meses?</p></div>
     <div data-a style="--d:.74s"><b>3</b><p>Quanto foi pago em horas extras calculadas ou lançadas de forma errada, que poderiam ter sido evitadas?</p></div>
     <div data-a style="--d:.86s"><b>4</b><p>Quanto a empresa já pagou em acordos e processos trabalhistas?</p></div>
     <div data-a style="--d:.98s"><b>5</b><p>Quanto custa uma decisão errada no DP e no RH, tomada no achismo ou por uma orientação errada de fora da empresa?</p></div>
-    <div data-a style="--d:1.1s"><b>6</b><p>Quanto vai custar para a sua transportadora não treinar o DP e o RH para tantas mudanças que vêm no próximo ano?</p></div>
+    <div data-a style="--d:1.1s"><b>6</b><p>Quanto vai custar para a transportadora não treinar o DP e o RH para tantas mudanças que vêm no próximo ano?</p></div>
   </div>
-  <p class="after" data-a style="--d:1.3s">Somadas, as respostas mostram quanto a sua transportadora pode economizar. Agora compare com <b>a condição da próxima tela.</b></p>
+  <p class="after" data-a style="--d:1.3s">Agora compare as suas respostas com <b>a condição da próxima tela.</b></p>
 </section>
 
 <!-- 15. INVESTIMENTO -->
@@ -620,7 +647,7 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
       <div class="p-bolsa">
         <p class="pct"><span data-count="31">31</span><i>%</i></p>
         <p class="pct-t">de bolsa</p>
-        <p class="pct-s">para as 20 primeiras empresas que fecharem</p>
+        <p class="pct-s">para os 20 primeiros alunos</p>
         <div class="burst" id="burst" aria-hidden="true"></div>
       </div>
       <div class="p-pay">
@@ -630,21 +657,22 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
     </div>
     <div class="right">
       <h3 data-a style="--d:.6s"><span class="live"></span>São só 20 bolsas</h3>
-      <p data-a style="--d:.7s">As bolsas são liberadas por ordem de fechamento: ficam com as 20 primeiras empresas que fecharem. Já na pré-venda, antes mesmo do lançamento, temos mais empresas interessadas do que bolsas disponíveis.</p>
+      <p data-a style="--d:.7s">Uma bolsa por aluno, liberada por ordem de fechamento. Já na pré-venda, antes mesmo do lançamento, temos mais interessados do que bolsas disponíveis.</p>
       <div class="incl" data-a style="--d:.85s">
         <div>6 módulos e 14 disciplinas do RH do transporte</div>
         <div>Corpo docente especialista e convidados do setor</div>
         <div>Conteúdo 100% EAD e gravado, no tempo do aluno</div>
         <div>1 aula ao vivo por mês, que também fica gravada</div>
-        <div>Estudo de caso aplicado na sua empresa</div>
+        <div>Metodologia com estudos de caso de transportadoras</div>
         <div>Certificado com validade nacional (MEC)</div>
       </div>
-      <p class="go" data-a style="--d:.95s">Reserve agora e garanta a bolsa de 31% para a sua empresa.</p>
+      <p class="go" data-a style="--d:.95s">Reserve agora a sua bolsa de 31%.</p>
       <a class="cta" data-a style="--d:1s" href="https://wa.me/5549999257301" target="_blank" rel="noopener">Reservar a bolsa no WhatsApp</a>
       <span class="tel" data-a style="--d:1.05s">WhatsApp UNITRAN: (49) 9 9925-7301 · mba.unitran.org</span>
     </div>
   </div>
 </section>
+
 
 </main>
 
@@ -747,7 +775,7 @@ body.capture .ui, body.capture .hint, body.capture .progress { display: none !im
     const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = null;
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4) (dx < 0 ? next : prev)();
   });
-  stage.addEventListener('click', e => { if (e.target.closest('a') || document.body.classList.contains('mob')) return; if (e.clientX > innerWidth * .5) next(); else prev(); });
+  stage.addEventListener('click', e => { const g = e.target.closest('[data-go]'); if (g) { e.preventDefault(); show(+g.dataset.go - 1); return; } if (e.target.closest('a') || document.body.classList.contains('mob')) return; if (e.clientX > innerWidth * .5) next(); else prev(); });
   setTimeout(() => document.getElementById('hint').classList.add('off'), 6000);
 
   let mx = 0, my = 0;
